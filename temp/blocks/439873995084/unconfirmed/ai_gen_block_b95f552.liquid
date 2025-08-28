@@ -1,6 +1,712 @@
+{% doc %}
+  @prompt
+    Create a hero banner section with a large background image, overlay text on the left side with a main headline and subheading, and four icon-based service boxes below the text. The section should be fully customizable with settings for background image, text content, colors, and the four service boxes with icons and labels. Include responsive design for mobile devices.
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-hero-banner-{{ ai_gen_id }} {
+    position: relative;
+    min-height: {{ block.settings.section_height }}px;
+    display: flex;
+    align-items: center;
+    background-color: {{ block.settings.fallback_color }};
+    overflow: hidden;
+  }
+
+  .ai-hero-banner-background-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .ai-hero-banner-background-{{ ai_gen_id }} img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-hero-banner-background-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ai-hero-banner-background-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
+    max-height: 300px;
+    opacity: 0.3;
+  }
+
+  .ai-hero-banner-empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .ai-hero-banner-overlay-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, {{ block.settings.overlay_opacity | divided_by: 100.0 }});
+    z-index: 2;
+  }
+
+  .ai-hero-banner-container-{{ ai_gen_id }} {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .ai-hero-banner-content-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    min-height: {{ block.settings.section_height }}px;
+  }
+
+  .ai-hero-banner-text-section-{{ ai_gen_id }} {
+    flex: 1;
+    max-width: 600px;
+    padding-right: 40px;
+  }
+
+  .ai-hero-banner-headline-{{ ai_gen_id }} {
+    font-size: {{ block.settings.headline_size }}px;
+    color: {{ block.settings.headline_color }};
+    margin: 0 0 16px 0;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  .ai-hero-banner-subheading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subheading_size }}px;
+    color: {{ block.settings.subheading_color }};
+    margin: 0 0 32px 0;
+    line-height: 1.4;
+  }
+
+  .ai-hero-banner-services-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .ai-hero-banner-service-box-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background-color: {{ block.settings.service_box_bg }};
+    border-radius: {{ block.settings.service_box_radius }}px;
+    border: {{ block.settings.service_box_border_width }}px solid {{ block.settings.service_box_border_color }};
+  }
+
+  .ai-hero-banner-service-icon-{{ ai_gen_id }} {
+    width: {{ block.settings.service_icon_size }}px;
+    height: {{ block.settings.service_icon_size }}px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: {{ block.settings.service_icon_bg }};
+    border-radius: 50%;
+    color: {{ block.settings.service_icon_color }};
+  }
+
+  .ai-hero-banner-service-icon-{{ ai_gen_id }} svg {
+    width: calc({{ block.settings.service_icon_size }}px * 0.6);
+    height: calc({{ block.settings.service_icon_size }}px * 0.6);
+  }
+
+  .ai-hero-banner-service-label-{{ ai_gen_id }} {
+    font-size: {{ block.settings.service_text_size }}px;
+    color: {{ block.settings.service_text_color }};
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  @media screen and (max-width: 768px) {
+    .ai-hero-banner-{{ ai_gen_id }} {
+      min-height: {{ block.settings.section_height_mobile }}px;
+    }
+
+    .ai-hero-banner-content-{{ ai_gen_id }} {
+      min-height: {{ block.settings.section_height_mobile }}px;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .ai-hero-banner-text-section-{{ ai_gen_id }} {
+      padding-right: 0;
+      margin-bottom: 32px;
+    }
+
+    .ai-hero-banner-headline-{{ ai_gen_id }} {
+      font-size: {{ block.settings.headline_size | times: 0.8 }}px;
+    }
+
+    .ai-hero-banner-subheading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.subheading_size | times: 0.9 }}px;
+    }
+
+    .ai-hero-banner-services-{{ ai_gen_id }} {
+      {% if block.settings.mobile_columns == '1' %}
+        grid-template-columns: 1fr;
+      {% else %}
+        grid-template-columns: repeat(2, 1fr);
+      {% endif %}
+      gap: 16px;
+    }
+
+    .ai-hero-banner-service-box-{{ ai_gen_id }} {
+      padding: 12px;
+    }
+
+    .ai-hero-banner-service-icon-{{ ai_gen_id }} {
+      width: {{ block.settings.service_icon_size | times: 0.8 }}px;
+      height: {{ block.settings.service_icon_size | times: 0.8 }}px;
+    }
+
+    .ai-hero-banner-service-icon-{{ ai_gen_id }} svg {
+      width: calc({{ block.settings.service_icon_size | times: 0.8 }}px * 0.6);
+      height: calc({{ block.settings.service_icon_size | times: 0.8 }}px * 0.6);
+    }
+
+    .ai-hero-banner-service-label-{{ ai_gen_id }} {
+      font-size: {{ block.settings.service_text_size | times: 0.9 }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-hero-banner-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-hero-banner-background-{{ ai_gen_id }}">
+    {% if block.settings.background_image %}
+      <img
+        src="{{ block.settings.background_image | image_url: width: 2000 }}"
+        alt="{{ block.settings.background_image.alt | escape }}"
+        loading="lazy"
+        width="{{ block.settings.background_image.width }}"
+        height="{{ block.settings.background_image.height }}"
+      >
+    {% else %}
+      <div class="ai-hero-banner-background-placeholder-{{ ai_gen_id }}">
+        {{ 'hero-apparel-1' | placeholder_svg_tag }}
+        <div class="ai-hero-banner-empty-state-{{ ai_gen_id }}">
+          Add a background image to get started
+        </div>
+      </div>
+    {% endif %}
+  </div>
+
+  {% if block.settings.show_overlay %}
+    <div class="ai-hero-banner-overlay-{{ ai_gen_id }}"></div>
+  {% endif %}
+
+  <div class="ai-hero-banner-container-{{ ai_gen_id }}">
+    <div class="ai-hero-banner-content-{{ ai_gen_id }}">
+      <div class="ai-hero-banner-text-section-{{ ai_gen_id }}">
+        {% if block.settings.headline != blank %}
+          <h1 class="ai-hero-banner-headline-{{ ai_gen_id }}">
+            {{ block.settings.headline }}
+          </h1>
+        {% endif %}
+
+        {% if block.settings.subheading != blank %}
+          <div class="ai-hero-banner-subheading-{{ ai_gen_id }}">
+            {{ block.settings.subheading }}
+          </div>
+        {% endif %}
+
+        <div class="ai-hero-banner-services-{{ ai_gen_id }}">
+          {% for i in (1..4) %}
+            {% assign service_label_key = 'service_' | append: i | append: '_label' %}
+            {% assign service_icon_key = 'service_' | append: i | append: '_icon' %}
+            {% assign service_label = block.settings[service_label_key] %}
+            {% assign service_icon = block.settings[service_icon_key] %}
+
+            {% if service_label != blank %}
+              <div class="ai-hero-banner-service-box-{{ ai_gen_id }}">
+                <div class="ai-hero-banner-service-icon-{{ ai_gen_id }}">
+                  {% case service_icon %}
+                    {% when 'shipping' %}
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m8 17 4 4 4-4"/>
+                        <path d="M12 12v9"/>
+                        <path d="M20.88 18.09A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.29"/>
+                      </svg>
+                    {% when 'support' %}
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z"/>
+                        <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/>
+                      </svg>
+                    {% when 'security' %}
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+                        <path d="m9 12 2 2 4-4"/>
+                      </svg>
+                    {% when 'quality' %}
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                      </svg>
+                    {% when 'returns' %}
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                        <path d="M3 3v5h5"/>
+                      </svg>
+                    {% when 'warranty' %}
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+                      </svg>
+                    {% when 'delivery' %}
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/>
+                        <path d="M15 18H9"/>
+                        <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/>
+                        <circle cx="17" cy="18" r="2"/>
+                        <circle cx="7" cy="18" r="2"/>
+                      </svg>
+                    {% else %}
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 12 2 2 4-4"/>
+                        <path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 1 0-8.953 8.953c.549-.055.998-.398.998-.95 0-.551-.448-1.006-.999-.95a8 8 0 1 1 7.954-7.954c-.056.551.399.999.95.999Z"/>
+                      </svg>
+                  {% endcase %}
+                </div>
+                <div class="ai-hero-banner-service-label-{{ ai_gen_id }}">
+                  {{ service_label }}
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Hero banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "color",
+      "id": "fallback_color",
+      "label": "Fallback background color",
+      "default": "#f4f4f4"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_overlay",
+      "label": "Show overlay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay opacity",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "section_height",
+      "min": 400,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Section height",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "section_height_mobile",
+      "min": 300,
+      "max": 600,
+      "step": 25,
+      "unit": "px",
+      "label": "Mobile section height",
+      "default": 500
+    },
+    {
+      "type": "select",
+      "id": "mobile_columns",
+      "label": "Service boxes on mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 column"
+        },
+        {
+          "value": "2",
+          "label": "2 columns"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "header",
+      "content": "Text content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Welcome to our store"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>Discover amazing products with exceptional quality and service</p>"
+    },
+    {
+      "type": "color",
+      "id": "headline_color",
+      "label": "Headline color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "headline_size",
+      "min": 24,
+      "max": 72,
+      "step": 4,
+      "unit": "px",
+      "label": "Headline size",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "subheading_size",
+      "min": 14,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Subheading size",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Service boxes style"
+    },
+    {
+      "type": "color",
+      "id": "service_box_bg",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "service_box_border_color",
+      "label": "Border color",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "range",
+      "id": "service_box_border_width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "label": "Border width",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "service_box_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 8
+    },
+    {
+      "type": "color",
+      "id": "service_icon_bg",
+      "label": "Icon background",
+      "default": "#000f9f"
+    },
+    {
+      "type": "color",
+      "id": "service_icon_color",
+      "label": "Icon color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "service_text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "service_icon_size",
+      "min": 32,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "label": "Icon size",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "service_text_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Text size",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Service 1"
+    },
+    {
+      "type": "text",
+      "id": "service_1_label",
+      "label": "Label",
+      "default": "Free shipping"
+    },
+    {
+      "type": "select",
+      "id": "service_1_icon",
+      "label": "Icon",
+      "options": [
+        {
+          "value": "shipping",
+          "label": "Shipping"
+        },
+        {
+          "value": "support",
+          "label": "Support"
+        },
+        {
+          "value": "security",
+          "label": "Security"
+        },
+        {
+          "value": "quality",
+          "label": "Quality"
+        },
+        {
+          "value": "returns",
+          "label": "Returns"
+        },
+        {
+          "value": "warranty",
+          "label": "Warranty"
+        },
+        {
+          "value": "delivery",
+          "label": "Delivery"
+        },
+        {
+          "value": "checkmark",
+          "label": "Checkmark"
+        }
+      ],
+      "default": "shipping"
+    },
+    {
+      "type": "header",
+      "content": "Service 2"
+    },
+    {
+      "type": "text",
+      "id": "service_2_label",
+      "label": "Label",
+      "default": "24/7 support"
+    },
+    {
+      "type": "select",
+      "id": "service_2_icon",
+      "label": "Icon",
+      "options": [
+        {
+          "value": "shipping",
+          "label": "Shipping"
+        },
+        {
+          "value": "support",
+          "label": "Support"
+        },
+        {
+          "value": "security",
+          "label": "Security"
+        },
+        {
+          "value": "quality",
+          "label": "Quality"
+        },
+        {
+          "value": "returns",
+          "label": "Returns"
+        },
+        {
+          "value": "warranty",
+          "label": "Warranty"
+        },
+        {
+          "value": "delivery",
+          "label": "Delivery"
+        },
+        {
+          "value": "checkmark",
+          "label": "Checkmark"
+        }
+      ],
+      "default": "support"
+    },
+    {
+      "type": "header",
+      "content": "Service 3"
+    },
+    {
+      "type": "text",
+      "id": "service_3_label",
+      "label": "Label",
+      "default": "Secure payment"
+    },
+    {
+      "type": "select",
+      "id": "service_3_icon",
+      "label": "Icon",
+      "options": [
+        {
+          "value": "shipping",
+          "label": "Shipping"
+        },
+        {
+          "value": "support",
+          "label": "Support"
+        },
+        {
+          "value": "security",
+          "label": "Security"
+        },
+        {
+          "value": "quality",
+          "label": "Quality"
+        },
+        {
+          "value": "returns",
+          "label": "Returns"
+        },
+        {
+          "value": "warranty",
+          "label": "Warranty"
+        },
+        {
+          "value": "delivery",
+          "label": "Delivery"
+        },
+        {
+          "value": "checkmark",
+          "label": "Checkmark"
+        }
+      ],
+      "default": "security"
+    },
+    {
+      "type": "header",
+      "content": "Service 4"
+    },
+    {
+      "type": "text",
+      "id": "service_4_label",
+      "label": "Label",
+      "default": "Easy returns"
+    },
+    {
+      "type": "select",
+      "id": "service_4_icon",
+      "label": "Icon",
+      "options": [
+        {
+          "value": "shipping",
+          "label": "Shipping"
+        },
+        {
+          "value": "support",
+          "label": "Support"
+        },
+        {
+          "value": "security",
+          "label": "Security"
+        },
+        {
+          "value": "quality",
+          "label": "Quality"
+        },
+        {
+          "value": "returns",
+          "label": "Returns"
+        },
+        {
+          "value": "warranty",
+          "label": "Warranty"
+        },
+        {
+          "value": "delivery",
+          "label": "Delivery"
+        },
+        {
+          "value": "checkmark",
+          "label": "Checkmark"
+        }
+      ],
+      "default": "returns"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero banner"
+    }
+  ],
+  "tag": null
+}
 {% endschema %}
