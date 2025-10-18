@@ -1,0 +1,53 @@
+{
+  "type": "footer",
+  "name": "Footer Group",
+  "sections": {
+    "ae-footer": {
+      "type": "ae-footer",
+      "blocks": {
+        "footer-menu-1": {
+          "type": "menu_column",
+          "settings": {
+            "heading": "Produkte",
+            "menu": ""
+          }
+        },
+        "footer-menu-2": {
+          "type": "menu_column",
+          "settings": {
+            "heading": "Services",
+            "menu": ""
+          }
+        },
+        "footer-menu-3": {
+          "type": "menu_column",
+          "settings": {
+            "heading": "Rechtliches",
+            "menu": ""
+          }
+        }
+      },
+      "block_order": [
+        "footer-menu-1",
+        "footer-menu-2",
+        "footer-menu-3"
+      ],
+      "settings": {
+        "footer_logo_text": "Autoschilder Express",
+        "footer_tagline": "Ihr zuverlässiger Partner für Kfz-Kennzeichen und digitale Zulassungen.",
+        "show_social": true,
+        "social_instagram": "",
+        "social_tiktok": "",
+        "social_linkedin": "",
+        "social_facebook": "",
+        "show_newsletter": true,
+        "newsletter_heading": "Newsletter",
+        "newsletter_text": "Bleiben Sie auf dem Laufenden mit Angeboten und News.",
+        "show_payment_icons": true
+      }
+    }
+  },
+  "order": [
+    "ae-footer"
+  ]
+}

@@ -1,0 +1,125 @@
+{%- comment -%}
+  AE Header für Autoschilder Express
+  Depict-Style Layout: Logo links, Nav zentriert, CTA rechts, Cart links neben CTA
+  Styles sind in base.css enthalten
+{%- endcomment -%}
+
+{{ 'ae-header.js' | asset_url | script_tag }}
+
+<header class="ae-header" role="banner">
+  <div class="ae-header__container">
+    
+    {%- comment -%} Logo - Links (Depict.ai Style) {%- endcomment -%}
+    <div class="ae-header__logo">
+      <a href="{{ routes.root_url }}" class="ae-header__logo-link">
+        {%- if section.settings.logo != blank -%}
+          {{ section.settings.logo | image_url: width: 200 | image_tag:
+            loading: 'eager',
+            widths: '100, 150, 200',
+            class: 'ae-header__logo-image',
+            alt: shop.name
+          }}
+        {%- else -%}
+          <div class="ae-header__logo-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <rect x="2" y="2" width="8" height="8" rx="2" fill="currentColor"/>
+              <rect x="14" y="2" width="8" height="8" rx="2" fill="currentColor" opacity="0.3"/>
+              <rect x="2" y="14" width="8" height="8" rx="2" fill="currentColor" opacity="0.3"/>
+              <rect x="14" y="14" width="8" height="8" rx="2" fill="currentColor" opacity="0.6"/>
+            </svg>
+          </div>
+          <span class="ae-header__logo-text">
+            {%- if section.settings.logo_text != blank -%}
+              {{ section.settings.logo_text }}
+            {%- else -%}
+              Autoschilder Express
+            {%- endif -%}
+          </span>
+        {%- endif -%}
+      </a>
+    </div>
+
+    {%- comment -%} Navigation - Zentriert {%- endcomment -%}
+    <nav class="ae-header__nav" aria-label="Hauptnavigation">
+      <ul class="ae-header__menu">
+        {%- for link in linklists[section.settings.menu].links -%}
+          <li class="ae-header__menu-item">
+            <a href="{{ link.url }}" class="ae-header__menu-link">
+              {{ link.title }}
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    {%- comment -%} Actions - Rechts (Cart + CTA) {%- endcomment -%}
+    <div class="ae-header__actions">
+      {%- comment -%} Cart - Links neben CTA {%- endcomment -%}
+      <a href="{{ routes.cart_url }}" class="ae-header__cart" aria-label="Warenkorb">
+        <svg class="ae-header__cart-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M9 2L7 6H3v14h18V6h-4l-2-4H9z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M9 10v4m6-4v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="ae-header__cart-count">{{ cart.item_count }}</span>
+      </a>
+      
+      {%- comment -%} CTA - Ganz rechts {%- endcomment -%}
+      {%- if section.settings.cta_text != blank -%}
+        <a href="{{ section.settings.cta_link }}" class="ae-header__cta">
+          {{ section.settings.cta_text }}
+        </a>
+      {%- endif -%}
+    </div>
+    
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "AE Header",
+  "tag": "header",
+  "class": "section-header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo Bild"
+    },
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text (falls kein Bild)",
+      "default": "Autoschilder Express"
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menü",
+      "default": "main-menu"
+    },
+    {
+      "type": "header",
+      "content": "Call-to-Action"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Zulassung starten"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Link"
+    }
+  ]
+}
+{% endschema %}

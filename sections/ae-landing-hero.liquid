@@ -1,0 +1,422 @@
+{%- comment -%}
+  Hero Section mit Role-Switch für Autoschilder Express
+  Inspiriert von MongoDB Hero-Layout mit Role-Toggle
+{%- endcomment -%}
+
+<section 
+  class="ae-hero"
+  data-section-id="{{ section.id }}"
+  data-section-type="ae-hero"
+  style="
+    --ae-hero-padding-top: {{ section.settings.padding_top_mobile }}px;
+    --ae-hero-padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    --ae-hero-padding-top-desktop: {{ section.settings.padding_top_desktop }}px;
+    --ae-hero-padding-bottom-desktop: {{ section.settings.padding_bottom_desktop }}px;
+  "
+>
+  <div class="ae-container">
+    <div class="ae-hero__content">
+      
+      {%- comment -%} Hero Text Content {%- endcomment -%}
+      <div class="ae-hero__text">
+        
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="ae-hero__eyebrow" data-aos="{{ section.settings.animation }}">
+            {{ section.settings.eyebrow }}
+          </p>
+        {%- endif -%}
+
+        {%- if section.settings.heading != blank -%}
+          <h1 class="ae-hero__heading" data-aos="{{ section.settings.animation }}" data-aos-delay="100">
+            {{ section.settings.heading }}
+          </h1>
+        {%- endif -%}
+
+        {%- comment -%} Role Switch Toggle {%- endcomment -%}
+        {%- if section.settings.enable_role_switch -%}
+          <div class="ae-hero__role-switch" data-aos="{{ section.settings.animation }}" data-aos-delay="200">
+            <button 
+              class="ae-role-btn active" 
+              data-role="plates"
+              aria-pressed="true"
+              aria-label="Kennzeichen Informationen anzeigen"
+            >
+              <span class="ae-role-icon">🚗</span>
+              {{ section.settings.role_1_label }}
+            </button>
+            <button 
+              class="ae-role-btn" 
+              data-role="registration"
+              aria-pressed="false"
+              aria-label="Zulassung Informationen anzeigen"
+            >
+              <span class="ae-role-icon">📋</span>
+              {{ section.settings.role_2_label }}
+            </button>
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} Dynamic Subcopy based on Role {%- endcomment -%}
+        <div class="ae-hero__subcopy-wrapper">
+          <p 
+            class="ae-hero__subcopy active" 
+            data-role-content="plates"
+            data-aos="{{ section.settings.animation }}" 
+            data-aos-delay="300"
+          >
+            {{ section.settings.role_1_description }}
+          </p>
+          <p 
+            class="ae-hero__subcopy" 
+            data-role-content="registration"
+            data-aos="{{ section.settings.animation }}" 
+            data-aos-delay="300"
+          >
+            {{ section.settings.role_2_description }}
+          </p>
+        </div>
+
+        {%- comment -%} CTAs {%- endcomment -%}
+        <div class="ae-hero__ctas" data-aos="{{ section.settings.animation }}" data-aos-delay="400">
+          
+          {%- comment -%} Primary CTA - Changes based on role {%- endcomment -%}
+          <div class="ae-hero__cta-wrapper">
+            {%- if section.settings.role_1_cta_text != blank -%}
+              <a 
+                href="{{ section.settings.role_1_cta_link }}" 
+                class="ae-btn ae-btn--primary active"
+                data-role-cta="plates"
+              >
+                {{ section.settings.role_1_cta_text }}
+                <svg class="ae-btn__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M4 10h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </a>
+            {%- endif -%}
+            
+            {%- if section.settings.role_2_cta_text != blank -%}
+              <a 
+                href="{{ section.settings.role_2_cta_link }}" 
+                class="ae-btn ae-btn--primary"
+                data-role-cta="registration"
+              >
+                {{ section.settings.role_2_cta_text }}
+                <svg class="ae-btn__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M4 10h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </a>
+            {%- endif -%}
+          </div>
+
+          {%- comment -%} Secondary CTA {%- endcomment -%}
+          {%- if section.settings.secondary_cta_text != blank -%}
+            <a 
+              href="{{ section.settings.secondary_cta_link }}" 
+              class="ae-btn ae-btn--secondary"
+            >
+              {{ section.settings.secondary_cta_text }}
+            </a>
+          {%- endif -%}
+        </div>
+
+        {%- comment -%} Trust Badges {%- endcomment -%}
+        {%- if section.settings.show_trust_badges -%}
+          <div class="ae-hero__trust" data-aos="{{ section.settings.animation }}" data-aos-delay="500">
+            <div class="ae-trust-badge">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 2L3 6v5c0 4.5 3 8 7 9 4-1 7-4.5 7-9V6l-7-4z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span>Amtlich zertifiziert</span>
+            </div>
+            <div class="ae-trust-badge">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 18c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M10 6v4l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span>Express in 24h</span>
+            </div>
+            <div class="ae-trust-badge">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M2 10h4l2-4 4 8 2-4h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span>Bundesweit digital</span>
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Hero Media - Changes based on role {%- endcomment -%}
+      <div class="ae-hero__media">
+        {%- comment -%} Plates Media {%- endcomment -%}
+        <div class="ae-hero__media-item active" data-role-media="plates">
+          {%- if section.settings.role_1_image != blank -%}
+            <div class="ae-hero__image-wrapper" data-aos="{{ section.settings.animation }}" data-aos-delay="200">
+              {{- section.settings.role_1_image | image_url: width: 1200 | image_tag:
+                loading: 'eager',
+                widths: '375, 550, 750, 1000, 1200',
+                sizes: '(min-width: 1200px) 600px, (min-width: 768px) 50vw, 100vw',
+                class: 'ae-hero__image',
+                alt: section.settings.role_1_image.alt | default: section.settings.role_1_label
+              -}}
+              {%- if section.settings.enable_glow -%}
+                <div class="ae-hero__glow"></div>
+              {%- endif -%}
+            </div>
+          {%- else -%}
+            <div class="ae-hero__placeholder" data-aos="{{ section.settings.animation }}" data-aos-delay="200">
+              <svg width="400" height="300" viewBox="0 0 400 300" fill="none">
+                <rect width="400" height="300" rx="12" fill="rgba(255, 83, 20, 0.1)"/>
+                <text x="200" y="150" text-anchor="middle" fill="rgba(255, 255, 255, 0.3)" font-size="16">Kennzeichen Bild</text>
+              </svg>
+            </div>
+          {%- endif -%}
+        </div>
+
+        {%- comment -%} Registration Media {%- endcomment -%}
+        <div class="ae-hero__media-item" data-role-media="registration">
+          {%- if section.settings.role_2_image != blank -%}
+            <div class="ae-hero__image-wrapper" data-aos="{{ section.settings.animation }}" data-aos-delay="200">
+              {{- section.settings.role_2_image | image_url: width: 1200 | image_tag:
+                loading: 'lazy',
+                widths: '375, 550, 750, 1000, 1200',
+                sizes: '(min-width: 1200px) 600px, (min-width: 768px) 50vw, 100vw',
+                class: 'ae-hero__image',
+                alt: section.settings.role_2_image.alt | default: section.settings.role_2_label
+              -}}
+              {%- if section.settings.enable_glow -%}
+                <div class="ae-hero__glow"></div>
+              {%- endif -%}
+            </div>
+          {%- else -%}
+            <div class="ae-hero__placeholder" data-aos="{{ section.settings.animation }}" data-aos-delay="200">
+              <svg width="400" height="300" viewBox="0 0 400 300" fill="none">
+                <rect width="400" height="300" rx="12" fill="rgba(255, 83, 20, 0.1)"/>
+                <text x="200" y="150" text-anchor="middle" fill="rgba(255, 255, 255, 0.3)" font-size="16">Zulassung Bild</text>
+              </svg>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  {%- if section.settings.enable_parallax -%}
+    <div class="ae-hero__parallax-bg" aria-hidden="true"></div>
+  {%- endif -%}
+</section>
+
+<script src="{{ 'ae-ui.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "AE Hero",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout & Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding oben (Mobile)",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding unten (Mobile)",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 40,
+      "max": 200,
+      "step": 8,
+      "unit": "px",
+      "label": "Padding oben (Desktop)",
+      "default": 104
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 40,
+      "max": 200,
+      "step": 8,
+      "unit": "px",
+      "label": "Padding unten (Desktop)",
+      "default": 104
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Autoschilder Express"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Hauptüberschrift",
+      "default": "Alles rund um deine Fahrzeugzulassung – einfach, digital, schnell."
+    },
+    {
+      "type": "header",
+      "content": "Role Switch"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_role_switch",
+      "label": "Role-Switch aktivieren",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "role_1_label",
+      "label": "Role 1: Label",
+      "default": "Kfz-Kennzeichen"
+    },
+    {
+      "type": "textarea",
+      "id": "role_1_description",
+      "label": "Role 1: Beschreibung",
+      "default": "Amtlich zertifizierte Kennzeichen in Premium-Qualität. Express-Lieferung in 24h deutschlandweit."
+    },
+    {
+      "type": "image_picker",
+      "id": "role_1_image",
+      "label": "Role 1: Bild"
+    },
+    {
+      "type": "text",
+      "id": "role_1_cta_text",
+      "label": "Role 1: CTA Text",
+      "default": "Kennzeichen bestellen"
+    },
+    {
+      "type": "url",
+      "id": "role_1_cta_link",
+      "label": "Role 1: CTA Link"
+    },
+    {
+      "type": "text",
+      "id": "role_2_label",
+      "label": "Role 2: Label",
+      "default": "Online Zulassung"
+    },
+    {
+      "type": "textarea",
+      "id": "role_2_description",
+      "label": "Role 2: Beschreibung",
+      "default": "Neuzulassung, Abmeldung oder Halterwechsel komplett digital einreichen. Bundesweit, rechtssicher, in Minuten erledigt."
+    },
+    {
+      "type": "image_picker",
+      "id": "role_2_image",
+      "label": "Role 2: Bild"
+    },
+    {
+      "type": "text",
+      "id": "role_2_cta_text",
+      "label": "Role 2: CTA Text",
+      "default": "Zulassung starten"
+    },
+    {
+      "type": "url",
+      "id": "role_2_cta_link",
+      "label": "Role 2: CTA Link"
+    },
+    {
+      "type": "header",
+      "content": "Secondary CTA"
+    },
+    {
+      "type": "text",
+      "id": "secondary_cta_text",
+      "label": "Sekundärer CTA Text",
+      "default": "Mehr erfahren"
+    },
+    {
+      "type": "url",
+      "id": "secondary_cta_link",
+      "label": "Sekundärer CTA Link"
+    },
+    {
+      "type": "header",
+      "content": "Visual Effects"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_glow",
+      "label": "Orange Glow aktivieren",
+      "default": true,
+      "info": "Subtiler Leuchteffekt hinter Bildern"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_parallax",
+      "label": "Parallax Hintergrund",
+      "default": false,
+      "info": "Deaktiviert bei prefers-reduced-motion"
+    },
+    {
+      "type": "select",
+      "id": "animation",
+      "label": "Animation",
+      "options": [
+        {
+          "value": "none",
+          "label": "Keine"
+        },
+        {
+          "value": "fade",
+          "label": "Fade"
+        },
+        {
+          "value": "fade-up",
+          "label": "Fade Up"
+        },
+        {
+          "value": "fade-down",
+          "label": "Fade Down"
+        },
+        {
+          "value": "zoom-in",
+          "label": "Zoom In"
+        }
+      ],
+      "default": "fade-up"
+    },
+    {
+      "type": "header",
+      "content": "Trust Badges"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust_badges",
+      "label": "Trust Badges anzeigen",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "AE Hero"
+    }
+  ]
+}
+{% endschema %}

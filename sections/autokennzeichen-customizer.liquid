@@ -1,0 +1,160 @@
+{{ 'autokennzeichen-customizer.css' | asset_url | stylesheet_tag }}
+
+<div class="license-plate-customizer">
+  <div class="container">
+    <div class="customizer-wrapper">
+      
+      <!-- Header -->
+      <div class="customizer-header">
+        {% if section.settings.title != blank %}
+          <h2 class="customizer-title">{{ section.settings.title }}</h2>
+        {% endif %}
+        {% if section.settings.subtitle != blank %}
+          <p class="customizer-subtitle">{{ section.settings.subtitle }}</p>
+        {% endif %}
+      </div>
+
+      <!-- License Plate Preview -->
+      <div class="license-plate-preview">
+        <h3 class="preview-title">Vorschau</h3>
+        <div class="license-plate" id="license-plate-preview">
+          <div class="eu-strip">
+            <div class="eu-stars">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+            </div>
+            <div class="country-code">D</div>
+          </div>
+          <div class="plate-content">
+            <span class="city-code" id="preview-city">K</span>
+            <span class="short-code" id="preview-short">XP</span>
+            <span class="number-code" id="preview-number">123</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input Form -->
+      <div class="customizer-form">
+        <h3 class="form-title">Bitte Kennzeichen eingeben</h3>
+        <form id="license-plate-form" class="plate-form">
+          <div class="input-group">
+            <label for="city-input" class="input-label">Ortskürzel (max. 3 Buchstaben)</label>
+            <input 
+              type="text" 
+              id="city-input" 
+              name="city" 
+              class="plate-input city-input" 
+              maxlength="3" 
+              placeholder="K"
+              value="K"
+              pattern="[A-Za-z]{1,3}"
+              required
+            >
+          </div>
+          
+          <div class="input-group">
+            <label for="short-input" class="input-label">Kürzel (max. 2 Buchstaben)</label>
+            <input 
+              type="text" 
+              id="short-input" 
+              name="short" 
+              class="plate-input short-input" 
+              maxlength="2" 
+              placeholder="XP"
+              value="XP"
+              pattern="[A-Za-z]{1,2}"
+              required
+            >
+          </div>
+          
+          <div class="input-group">
+            <label for="number-input" class="input-label">Zahlenkombination (max. 4 Zahlen)</label>
+            <input 
+              type="text" 
+              id="number-input" 
+              name="number" 
+              class="plate-input number-input" 
+              maxlength="4" 
+              placeholder="123"
+              value="123"
+              pattern="[0-9]{1,4}"
+              required
+            >
+          </div>
+        </form>
+      </div>
+
+      <!-- Info Section -->
+      <div class="customizer-info">
+        <h3 class="info-title">Noch kein Wunschkennzeichen reserviert?</h3>
+        <p class="info-text">
+          Wenn Sie das Kennzeichen für die Zulassung eines KFZ verwenden möchten, reservieren Sie es vorab bei Ihrer Zulassungsstelle.
+        </p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="customizer-actions">
+        <button type="button" class="btn btn-secondary" id="reset-btn">Zurücksetzen</button>
+        <button type="button" class="btn btn-primary" id="save-btn">Kennzeichen speichern</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="{{ 'autokennzeichen-customizer.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Autokennzeichen",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titel",
+      "default": "Ihr Wunschkennzeichen"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Untertitel",
+      "default": "Gestalten Sie Ihr individuelles Autokennzeichen"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_info",
+      "label": "Info-Bereich anzeigen",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Primärfarbe",
+      "default": "#007AFF"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Hintergrundfarbe",
+      "default": "#F2F2F7"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Autokennzeichen Customizer"
+    }
+  ]
+}
+{% endschema %}

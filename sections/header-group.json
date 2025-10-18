@@ -1,0 +1,19 @@
+{
+  "type": "header",
+  "name": "Header Group",
+  "sections": {
+    "ae-header": {
+      "type": "ae-header",
+      "settings": {
+        "logo_text": "Autoschilder Express",
+        "menu": "main-menu",
+        "sticky_header": true,
+        "secondary_cta_text": "Zulassung starten",
+        "secondary_cta_link": ""
+      }
+    }
+  },
+  "order": [
+    "ae-header"
+  ]
+}
