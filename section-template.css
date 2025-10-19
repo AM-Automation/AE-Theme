@@ -1,0 +1,348 @@
+/* ============================================
+   Section Name Styles
+   Inspiration: [Referenz/Brand]
+   ============================================ */
+
+/* Container */
+.section-name {
+  /* Layout */
+  display: block;
+  position: relative;
+  width: 100%;
+  
+  /* Spacing */
+  padding: var(--spacing-20, 5rem) var(--spacing-4, 1rem);
+  
+  /* Colors */
+  background: var(--background);
+  color: var(--foreground);
+  
+  /* Border */
+  border-bottom: 1px solid var(--border);
+}
+
+.section-name__container {
+  /* Layout */
+  max-width: 1280px;
+  margin: 0 auto;
+  
+  /* Grid/Flex */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12, 3rem);
+}
+
+/* ============================================
+   Header
+   ============================================ */
+
+.section-name__header {
+  text-align: center;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.section-name__heading {
+  /* Typography */
+  font-family: var(--font-sans);
+  font-size: var(--text-4xl, 2.25rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: var(--tracking-tight);
+  
+  /* Color */
+  color: var(--foreground);
+  
+  /* Spacing */
+  margin: 0 0 var(--spacing-4, 1rem) 0;
+}
+
+.section-name__description {
+  /* Typography */
+  font-size: var(--text-lg, 1.125rem);
+  line-height: 1.6;
+  
+  /* Color */
+  color: var(--muted-foreground);
+  
+  /* Spacing */
+  margin: 0;
+}
+
+/* ============================================
+   Content
+   ============================================ */
+
+.section-name__content {
+  /* Layout */
+  display: block;
+}
+
+.section-name__items {
+  /* Grid Layout */
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--spacing-6, 1.5rem);
+}
+
+.section-name__item {
+  /* Layout */
+  position: relative;
+  
+  /* Spacing */
+  padding: var(--spacing-6, 1.5rem);
+  
+  /* Background */
+  background: var(--card);
+  
+  /* Border */
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 0.75rem);
+  
+  /* Transitions */
+  transition: all 0.2s ease;
+}
+
+.section-name__item:hover {
+  /* Hover State */
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+}
+
+.section-name__item-title {
+  /* Typography */
+  font-size: var(--text-xl, 1.25rem);
+  font-weight: 600;
+  line-height: 1.4;
+  
+  /* Color */
+  color: var(--foreground);
+  
+  /* Spacing */
+  margin: 0 0 var(--spacing-2, 0.5rem) 0;
+}
+
+.section-name__item-text {
+  /* Typography */
+  font-size: var(--text-base, 1rem);
+  line-height: 1.6;
+  
+  /* Color */
+  color: var(--muted-foreground);
+  
+  /* Spacing */
+  margin: 0;
+}
+
+/* ============================================
+   CTA (Call-to-Action)
+   ============================================ */
+
+.section-name__cta-wrapper {
+  /* Layout */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: var(--spacing-8, 2rem);
+}
+
+.section-name__cta {
+  /* Display */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2, 0.5rem);
+  
+  /* Spacing */
+  padding: var(--spacing-3, 0.75rem) var(--spacing-6, 1.5rem);
+  
+  /* Typography */
+  font-family: var(--font-sans);
+  font-size: var(--text-base, 1rem);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  
+  /* Colors */
+  background: var(--primary);
+  color: var(--primary-foreground);
+  
+  /* Border */
+  border: none;
+  border-radius: var(--radius-lg, 0.75rem);
+  
+  /* Effects */
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  
+  /* Transitions */
+  transition: all 0.2s ease;
+}
+
+.section-name__cta:hover {
+  /* Hover State */
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+  opacity: 0.9;
+}
+
+.section-name__cta:focus {
+  /* Focus State */
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.section-name__cta:active {
+  /* Active State */
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.section-name__cta-icon {
+  /* Icon */
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+  
+  /* Transition */
+  transition: transform 0.2s ease;
+}
+
+.section-name__cta:hover .section-name__cta-icon {
+  /* Icon Hover Animation */
+  transform: translateX(2px);
+}
+
+/* ============================================
+   States & Modifiers
+   ============================================ */
+
+/* Active State */
+.section-name__item.active {
+  border-color: var(--primary);
+  background: var(--accent);
+}
+
+/* Disabled State */
+.section-name__item[disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Loading State */
+.section-name__item.loading {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-name[data-animate] {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+/* Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .section-name,
+  .section-name__item,
+  .section-name__cta,
+  .section-name__cta-icon {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+/* Tablet (768px+) */
+@media (min-width: 768px) {
+  .section-name {
+    padding: var(--spacing-24, 6rem) var(--spacing-6, 1.5rem);
+  }
+  
+  .section-name__heading {
+    font-size: var(--text-5xl, 3rem);
+  }
+  
+  .section-name__items {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-8, 2rem);
+  }
+}
+
+/* Desktop (1024px+) */
+@media (min-width: 1024px) {
+  .section-name {
+    padding: var(--spacing-32, 8rem) var(--spacing-8, 2rem);
+  }
+  
+  .section-name__container {
+    gap: var(--spacing-16, 4rem);
+  }
+  
+  .section-name__heading {
+    font-size: var(--text-6xl, 3.75rem);
+  }
+  
+  .section-name__items {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Large Desktop (1280px+) */
+@media (min-width: 1280px) {
+  .section-name__container {
+    max-width: 1440px;
+  }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+
+@media print {
+  .section-name {
+    background: white;
+    color: black;
+    padding: 1rem;
+  }
+  
+  .section-name__cta {
+    display: none;
+  }
+}
+
+/* ============================================
+   Dark Mode (if supported)
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+  /* Wird über CSS Custom Properties automatisch gehandelt */
+  /* Nur falls spezifische Anpassungen nötig sind */
+}
+

@@ -1,0 +1,172 @@
+{%- comment -%}
+  AE Announcement Banner - MongoDB Style
+  Rotierendes Banner über dem Header mit 3 wechselnden Texten, CTA und manueller Navigation
+{%- endcomment -%}
+
+{{ 'ae-announcement-banner.js' | asset_url | script_tag }}
+
+<div class="ae-announcement-banner">
+  <div class="ae-announcement-banner__container">
+    
+    {%- comment -%} Slides Container {%- endcomment -%}
+    <div class="ae-announcement-banner__slides">
+      <ul class="ae-announcement-banner__slides-list">
+        
+        {%- comment -%} Slide 1 {%- endcomment -%}
+        {%- if section.settings.slide_1_text != blank -%}
+          <li class="ae-announcement-banner__slide" aria-hidden="false">
+            <div class="ae-announcement-banner__content">
+              <span class="ae-announcement-banner__text">{{ section.settings.slide_1_text }}</span>
+              {%- if section.settings.show_cta and section.settings.cta_text != blank -%}
+                <a href="{{ section.settings.cta_link }}" class="ae-announcement-banner__cta">
+                  {{ section.settings.cta_text }}
+                  <svg class="ae-announcement-banner__cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              {%- endif -%}
+            </div>
+          </li>
+        {%- endif -%}
+        
+        {%- comment -%} Slide 2 {%- endcomment -%}
+        {%- if section.settings.slide_2_text != blank -%}
+          <li class="ae-announcement-banner__slide" aria-hidden="true">
+            <div class="ae-announcement-banner__content">
+              <span class="ae-announcement-banner__text">{{ section.settings.slide_2_text }}</span>
+              {%- if section.settings.show_cta and section.settings.cta_text != blank -%}
+                <a href="{{ section.settings.cta_link }}" class="ae-announcement-banner__cta">
+                  {{ section.settings.cta_text }}
+                  <svg class="ae-announcement-banner__cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              {%- endif -%}
+            </div>
+          </li>
+        {%- endif -%}
+        
+        {%- comment -%} Slide 3 {%- endcomment -%}
+        {%- if section.settings.slide_3_text != blank -%}
+          <li class="ae-announcement-banner__slide" aria-hidden="true">
+            <div class="ae-announcement-banner__content">
+              <span class="ae-announcement-banner__text">{{ section.settings.slide_3_text }}</span>
+              {%- if section.settings.show_cta and section.settings.cta_text != blank -%}
+                <a href="{{ section.settings.cta_link }}" class="ae-announcement-banner__cta">
+                  {{ section.settings.cta_text }}
+                  <svg class="ae-announcement-banner__cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              {%- endif -%}
+            </div>
+          </li>
+        {%- endif -%}
+        
+      </ul>
+    </div>
+    
+    {%- comment -%} Navigation Arrow - Rechts {%- endcomment -%}
+    <button 
+      class="ae-announcement-banner__nav" 
+      aria-label="Nächste Nachricht"
+      type="button"
+    >
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "AE Announcement Banner",
+  "tag": "section",
+  "class": "section-announcement-banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Banner Einstellungen"
+    },
+    {
+      "type": "paragraph",
+      "content": "Das Banner rotiert automatisch alle 3 Sekunden zwischen den Texten."
+    },
+    {
+      "type": "header",
+      "content": "Nachricht 1"
+    },
+    {
+      "type": "text",
+      "id": "slide_1_text",
+      "label": "Text 1",
+      "default": "Innovate for the AI Era: Get the latest news and updates!"
+    },
+    {
+      "type": "header",
+      "content": "Nachricht 2"
+    },
+    {
+      "type": "text",
+      "id": "slide_2_text",
+      "label": "Text 2",
+      "default": "Modernize 2-3x faster with our platform. Learn more today!"
+    },
+    {
+      "type": "header",
+      "content": "Nachricht 3"
+    },
+    {
+      "type": "text",
+      "id": "slide_3_text",
+      "label": "Text 3",
+      "default": "Search & Vector Search now in public preview!"
+    },
+    {
+      "type": "header",
+      "content": "Call-to-Action"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "CTA anzeigen",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Learn more"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Link"
+    },
+    {
+      "type": "header",
+      "content": "Design"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Hintergrundfarbe",
+      "default": "#001E2B"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Textfarbe",
+      "default": "#FFFFFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "AE Announcement Banner"
+    }
+  ]
+}
+{% endschema %}
+

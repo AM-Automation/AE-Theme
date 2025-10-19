@@ -1,0 +1,249 @@
+{%- comment -%}
+  Section Name - Inspiration/Referenz
+  Beschreibung: Was macht diese Section und wofür wird sie verwendet
+  
+  Features:
+  - Feature 1
+  - Feature 2
+  - Feature 3
+{%- endcomment -%}
+
+{%- liquid
+  # Section Settings
+  assign section_id = section.id
+  assign enable_animation = section.settings.enable_animation
+  
+  # Load JavaScript if needed
+  if section.settings.enable_js
+    echo 'section-name.js' | asset_url | script_tag
+  endif
+-%}
+
+<section 
+  class="section-name" 
+  data-section-id="{{ section_id }}"
+  {% if enable_animation %}data-animate{% endif %}
+  style="
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.background_color }};
+  "
+>
+  <div class="section-name__container">
+    
+    {%- comment -%} Header {%- endcomment -%}
+    {%- if section.settings.heading != blank or section.settings.description != blank -%}
+      <div class="section-name__header">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="section-name__heading">
+            {{ section.settings.heading }}
+          </h2>
+        {%- endif -%}
+        
+        {%- if section.settings.description != blank -%}
+          <div class="section-name__description">
+            {{ section.settings.description }}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+    
+    {%- comment -%} Content {%- endcomment -%}
+    <div class="section-name__content">
+      
+      {%- comment -%} Blocks Loop (falls Blocks verwendet werden) {%- endcomment -%}
+      {%- if section.blocks.size > 0 -%}
+        <div class="section-name__items">
+          {%- for block in section.blocks -%}
+            <div 
+              class="section-name__item" 
+              {{ block.shopify_attributes }}
+            >
+              {%- case block.type -%}
+                {%- when 'item' -%}
+                  <h3 class="section-name__item-title">
+                    {{ block.settings.title }}
+                  </h3>
+                  <p class="section-name__item-text">
+                    {{ block.settings.text }}
+                  </p>
+              {%- endcase -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+      
+    </div>
+    
+    {%- comment -%} CTA (Call-to-Action) {%- endcomment -%}
+    {%- if section.settings.show_cta and section.settings.cta_text != blank -%}
+      <div class="section-name__cta-wrapper">
+        <a 
+          href="{{ section.settings.cta_link }}" 
+          class="section-name__cta"
+        >
+          {{ section.settings.cta_text }}
+          
+          {%- comment -%} Icon (Optional) {%- endcomment -%}
+          <svg class="section-name__cta-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    {%- endif -%}
+    
+  </div>
+</section>
+
+{%- comment -%} Inline Critical CSS (Optional) {%- endcomment -%}
+<style>
+  .section-name {
+    /* Critical styles hier falls nötig */
+    /* Rest der Styles gehört in base.css */
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Section Name (Deutsch)",
+  "tag": "section",
+  "class": "section-name-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Inhalt"
+    },
+    {
+      "type": "paragraph",
+      "content": "Konfiguriere die Haupt-Inhalte dieser Section."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Überschrift",
+      "default": "Section Überschrift"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Beschreibung",
+      "default": "<p>Beschreibungstext hier</p>"
+    },
+    {
+      "type": "header",
+      "content": "Call-to-Action"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "CTA anzeigen",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Mehr erfahren"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Link"
+    },
+    {
+      "type": "header",
+      "content": "Design-Einstellungen"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Hintergrundfarbe",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 8,
+      "unit": "px",
+      "label": "Abstand oben",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 8,
+      "unit": "px",
+      "label": "Abstand unten",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Erweiterte Einstellungen"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_animation",
+      "label": "Animationen aktivieren",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_js",
+      "label": "JavaScript laden",
+      "default": false,
+      "info": "Nur aktivieren falls interaktive Features benötigt werden"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Element",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titel",
+          "default": "Element Titel"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Element Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Bild"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Section Name",
+      "blocks": [
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
