@@ -1,6 +1,7 @@
 // AE Mega Menu JavaScript
 (() => {
-  console.log('AE Mega Menu loaded successfully');
+  // Production: Remove console.log for performance
+  // console.log('AE Mega Menu loaded successfully');
   
   // Wait for DOM to be ready
   document.addEventListener('DOMContentLoaded', function() {
@@ -11,8 +12,8 @@
 
     // Function to show mega menu
     function showMegaMenu(menuItem) {
-      const menuId = menuItem.closest('[data-mega-menu]').getAttribute('data-mega-menu');
-      const megaMenu = document.querySelector(`[data-mega-menu-content]`);
+      const menuItemElement = menuItem.closest('.ae-header__menu-item');
+      const megaMenu = menuItemElement.querySelector('[data-mega-menu-content]');
       
       if (!megaMenu) return;
 
@@ -21,7 +22,7 @@
       
       // Show the target mega menu
       megaMenu.classList.add('active');
-      menuItem.closest('.ae-header__menu-item').classList.add('active');
+      menuItemElement.classList.add('active');
       activeMenu = megaMenu;
     }
 
@@ -63,7 +64,8 @@
       menuItem.addEventListener('click', (e) => {
         if (window.innerWidth <= 768) {
           e.preventDefault();
-          const isActive = menuItem.closest('.ae-header__menu-item').classList.contains('active');
+          const menuItemElement = menuItem.closest('.ae-header__menu-item');
+          const isActive = menuItemElement && menuItemElement.classList.contains('active');
           
           if (isActive) {
             hideAllMegaMenus();
@@ -87,7 +89,8 @@
 
     // Close mega menu when clicking outside
     document.addEventListener('click', (e) => {
-      if (!e.target.closest('.ae-header__menu-item') && !e.target.closest('.ae-mega-menu')) {
+      const target = e.target;
+      if (target && !target.closest('.ae-header__menu-item') && !target.closest('.ae-mega-menu')) {
         hideAllMegaMenus();
       }
     });
@@ -114,6 +117,6 @@
       }
     });
 
-    console.log('Mega Menu initialized with', menuItems.length, 'menu items');
+    // console.log('Mega Menu initialized with', menuItems.length, 'menu items');
   });
 })();

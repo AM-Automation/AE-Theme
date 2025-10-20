@@ -34,6 +34,25 @@
     {% endif %}
 
     {{ content_for_header }}
+    
+    <script>
+      // Immediately hide Shopify cookie banners
+      (function() {
+        const style = document.createElement('style');
+        style.textContent = `
+          [data-shopify-cookie-banner],
+          .shopify-cookie-banner,
+          [data-cookie-banner]:not(.cookie-consent-banner),
+          .cookie-banner:not(.cookie-consent-banner) {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            transform: translateY(100%) !important;
+          }
+        `;
+        document.head.appendChild(style);
+      })();
+    </script>
   </head>
 
   <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
@@ -67,5 +86,43 @@
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
     {% endif %}
+
+    {% comment %} Cookie Consent Banner - Apple Design {% endcomment %}
+    {% render 'cookie-consent-banner' %}
+    
+    <script>
+      // Immediately hide any existing cookie banners
+      (function() {
+        const hideExistingBanners = () => {
+          const selectors = [
+            '[data-shopify-cookie-banner]',
+            '.shopify-cookie-banner', 
+            '[data-cookie-banner]:not(.cookie-consent-banner)',
+            '.cookie-banner:not(.cookie-consent-banner)'
+          ];
+          
+          selectors.forEach(selector => {
+            const banners = document.querySelectorAll(selector);
+            banners.forEach(banner => {
+              banner.style.display = 'none';
+              banner.style.visibility = 'hidden';
+              banner.style.opacity = '0';
+              banner.style.transform = 'translateY(100%)';
+            });
+          });
+        };
+        
+        // Run immediately
+        hideExistingBanners();
+        
+        // Run when DOM is ready
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', hideExistingBanners);
+        }
+        
+        // Run periodically to catch dynamically added banners
+        setInterval(hideExistingBanners, 100);
+      })();
+    </script>
   </body>
 </html>

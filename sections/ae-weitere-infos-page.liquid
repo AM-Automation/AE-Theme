@@ -1,0 +1,809 @@
+{%- comment -%}
+  AE Weitere Infos Page Section
+  Depict.ai-inspired design with 3 main categories and subchapters
+{%- endcomment -%}
+
+<div class="ae-weitere-infos-page">
+  <div class="ae-container">
+    
+    {%- comment -%} Header Section {%- endcomment -%}
+    <div class="ae-weitere-infos-header" data-aos="{{ section.settings.animation }}">
+      {%- if section.settings.show_breadcrumbs -%}
+        <nav class="ae-breadcrumbs">
+          <a href="{{ routes.root_url }}">Startseite</a>
+          <span class="ae-breadcrumbs__separator">›</span>
+          <span class="ae-breadcrumbs__current">{{ section.settings.page_title | default: 'Weitere Infos' }}</span>
+        </nav>
+      {%- endif -%}
+      
+      <div class="ae-weitere-infos-header__content">
+        <h1 class="ae-weitere-infos-title">{{ section.settings.page_title | default: 'Weitere Infos' }}</h1>
+        <p class="ae-weitere-infos-subtitle">{{ section.settings.page_subtitle | default: 'Alles was Sie über unsere Services wissen müssen' }}</p>
+      </div>
+    </div>
+
+    {%- comment -%} Mobile Navigation {%- endcomment -%}
+    <div class="ae-weitere-infos-mobile-nav">
+      <div class="ae-weitere-infos-mobile-nav__container">
+        <a href="#zulassung" class="ae-weitere-infos-mobile-nav__item ae-weitere-infos-mobile-nav__item--zulassung">
+          <div class="ae-weitere-infos-mobile-nav__icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span>Zulassung</span>
+        </a>
+        <a href="#abmeldung" class="ae-weitere-infos-mobile-nav__item ae-weitere-infos-mobile-nav__item--abmeldung">
+          <div class="ae-weitere-infos-mobile-nav__icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M4 4h12a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span>Abmeldung</span>
+        </a>
+        <a href="#adress-aenderung" class="ae-weitere-infos-mobile-nav__item ae-weitere-infos-mobile-nav__item--adress-aenderung">
+          <div class="ae-weitere-infos-mobile-nav__icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span>Adresse</span>
+        </a>
+      </div>
+    </div>
+
+    {%- comment -%} Desktop Layout {%- endcomment -%}
+    <div class="ae-weitere-infos-layout">
+      {%- comment -%} Navigation Sidebar {%- endcomment -%}
+      <div class="ae-weitere-infos-sidebar">
+        <nav class="ae-weitere-infos-nav">
+          
+          {%- comment -%} Zulassung Category - Expanded {%- endcomment -%}
+          <div class="ae-weitere-infos-nav__category ae-weitere-infos-nav__category--zulassung ae-weitere-infos-nav__category--expanded">
+            <div class="ae-weitere-infos-nav__header">
+              <div class="ae-weitere-infos-nav__icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4-4v-2.586a1 1 0 01.293-.707L10.293 7H3V4z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3 class="ae-weitere-infos-nav__title">Zulassung</h3>
+            </div>
+            
+            <div class="ae-weitere-infos-nav__subchapters">
+              <a href="#neuzulassung" class="ae-weitere-infos-nav__subchapter ae-weitere-infos-nav__subchapter--active">Neuzulassung</a>
+              <a href="#halterwechsel" class="ae-weitere-infos-nav__subchapter">Halterwechsel</a>
+              <a href="#umschreibung" class="ae-weitere-infos-nav__subchapter">Umschreibung</a>
+              <a href="#saisonzulassung" class="ae-weitere-infos-nav__subchapter">Saisonzulassung</a>
+            </div>
+          </div>
+
+          {%- comment -%} Abmeldung Category - Collapsed {%- endcomment -%}
+          <div class="ae-weitere-infos-nav__category ae-weitere-infos-nav__category--abmeldung ae-weitere-infos-nav__category--collapsed">
+            <div class="ae-weitere-infos-nav__header">
+              <div class="ae-weitere-infos-nav__icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M13 2H6a2 2 0 00-2 2v16l4-2 4 2V4a2 2 0 00-2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3 class="ae-weitere-infos-nav__title">Abmeldung</h3>
+            </div>
+            
+            <div class="ae-weitere-infos-nav__subchapters ae-weitere-infos-nav__subchapters--hidden">
+              <a href="#standard-abmeldung" class="ae-weitere-infos-nav__subchapter">Standard Abmeldung</a>
+              <a href="#express-abmeldung" class="ae-weitere-infos-nav__subchapter">Express Abmeldung</a>
+              <a href="#kennzeichen-rueckgabe" class="ae-weitere-infos-nav__subchapter">Kennzeichen Rückgabe</a>
+            </div>
+          </div>
+
+          {%- comment -%} Adress-/Namensänderung Category - Collapsed {%- endcomment -%}
+          <div class="ae-weitere-infos-nav__category ae-weitere-infos-nav__category--adress-aenderung ae-weitere-infos-nav__category--collapsed">
+            <div class="ae-weitere-infos-nav__header">
+              <div class="ae-weitere-infos-nav__icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3 class="ae-weitere-infos-nav__title">Adress-/Namensänderung</h3>
+            </div>
+            
+            <div class="ae-weitere-infos-nav__subchapters ae-weitere-infos-nav__subchapters--hidden">
+              <a href="#adress-aenderung-service" class="ae-weitere-infos-nav__subchapter">Adressänderung</a>
+              <a href="#namens-aenderung" class="ae-weitere-infos-nav__subchapter">Namensänderung</a>
+              <a href="#kombinierte-aenderung" class="ae-weitere-infos-nav__subchapter">Kombinierte Änderung</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      {%- comment -%} Main Content {%- endcomment -%}
+      <div class="ae-weitere-infos-content">
+        
+        {%- comment -%} Zulassung Section {%- endcomment -%}
+        <section id="zulassung" class="ae-weitere-infos-section">
+          <div class="ae-weitere-infos-section__header">
+            <h2 class="ae-weitere-infos-section__title">Zulassung</h2>
+            <p class="ae-weitere-infos-section__description">
+              Vollständige Kfz-Zulassung online. Komplett digital, rechtssicher und in wenigen Minuten erledigt.
+            </p>
+          </div>
+        </section>
+
+        {%- comment -%} Neuzulassung Subsection {%- endcomment -%}
+        <section id="neuzulassung" class="ae-weitere-infos-subsection">
+          <div class="ae-weitere-infos-subsection__header">
+            <h3 class="ae-weitere-infos-subsection__title">Neuzulassung</h3>
+            <p class="ae-weitere-infos-subsection__description">
+              Komplett digitale Neuzulassung Ihres Fahrzeugs. Bundesweit, rechtssicher, in wenigen Minuten erledigt.
+            </p>
+          </div>
+          
+          <div class="ae-weitere-infos-features">
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--zulassung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Voraussetzungen</h4>
+                <p>Fahrzeugpapiere, Personalausweis, eVB-Nummer und gültige Versicherung. Alle Dokumente müssen vollständig und aktuell sein.</p>
+              </div>
+            </div>
+            
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--zulassung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Ablauf</h4>
+                <p>Online-Formular ausfüllen, Identitätsprüfung durchführen und Antrag digital einreichen. Bearbeitung erfolgt automatisch.</p>
+              </div>
+            </div>
+            
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--zulassung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Benötigte Dokumente</h4>
+                <p>Fahrzeugschein, Fahrzeugbrief, SEPA-Mandat und eVB-Nummer. Alle Dokumente digital hochladen.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="ae-weitere-infos-cta">
+            <a href="#" class="ae-btn ae-btn--primary ae-btn--large">
+              Neuzulassung starten
+              <svg class="ae-btn__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </div>
+        </section>
+
+        {%- comment -%} Halterwechsel Subsection {%- endcomment -%}
+        <section id="halterwechsel" class="ae-weitere-infos-subsection">
+          <div class="ae-weitere-infos-subsection__header">
+            <h3 class="ae-weitere-infos-subsection__title">Halterwechsel</h3>
+            <p class="ae-weitere-infos-subsection__description">
+              Eigentümerwechsel digital abwickeln. Einfach, schnell und rechtssicher für beide Parteien.
+            </p>
+          </div>
+          
+          <div class="ae-weitere-infos-features">
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--zulassung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Voraussetzungen</h4>
+                <p>Beide Halter müssen anwesend sein und alle Fahrzeugdokumente vollständig vorliegen. Identitätsprüfung für beide Parteien erforderlich.</p>
+              </div>
+            </div>
+            
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--zulassung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Ablauf</h4>
+                <p>Halterwechsel online durchführen, Identitätsprüfung beider Parteien und digitale Bearbeitung aller Dokumente.</p>
+              </div>
+            </div>
+            
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--zulassung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Benötigte Dokumente</h4>
+                <p>Kaufvertrag, Fahrzeugbrief, Ausweise beider Parteien und alle Fahrzeugdokumente. Vollständige Dokumentation erforderlich.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="ae-weitere-infos-cta">
+            <a href="#" class="ae-btn ae-btn--primary ae-btn--large">
+              Halterwechsel starten
+              <svg class="ae-btn__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </div>
+        </section>
+
+        {%- comment -%} Umschreibung Subsection {%- endcomment -%}
+        <section id="umschreibung" class="ae-weitere-infos-subsection">
+          <div class="ae-weitere-infos-subsection__header">
+            <h3 class="ae-weitere-infos-subsection__title">Umschreibung</h3>
+            <p class="ae-weitere-infos-subsection__description">
+              Kennzeichen umschreiben oder ändern. Digital und ohne Wartezeiten.
+            </p>
+          </div>
+          
+          <div class="ae-weitere-infos-features">
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--zulassung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Voraussetzungen</h4>
+                <p>Bestehende Zulassung und festgelegter Zeitraum für die Saison. Versicherung muss für den gewünschten Zeitraum angepasst werden.</p>
+              </div>
+            </div>
+            
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--zulassung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Ablauf</h4>
+                <p>Saisonzeitraum wählen, Versicherung anpassen und alle Dokumente digital einreichen. Automatische Bearbeitung nach Zeitplan.</p>
+              </div>
+            </div>
+            
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--zulassung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Benötigte Dokumente</h4>
+                <p>Zulassungsbescheinigung, eVB-Nummer und Versicherungsnachweis für den gewünschten Zeitraum. Zeitraum-Dokumentation erforderlich.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="ae-weitere-infos-cta">
+            <a href="#" class="ae-btn ae-btn--primary ae-btn--large">
+              Umschreibung starten
+              <svg class="ae-btn__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </div>
+        </section>
+
+        {%- comment -%} Saisonzulassung Subsection {%- endcomment -%}
+        <section id="saisonzulassung" class="ae-weitere-infos-subsection">
+          <div class="ae-weitere-infos-subsection__header">
+            <h3 class="ae-weitere-infos-subsection__title">Saisonzulassung</h3>
+            <p class="ae-weitere-infos-subsection__description">
+              Kennzeichen umschreiben oder ändern. Digital und ohne Wartezeiten für saisonale Fahrzeuge.
+            </p>
+          </div>
+          
+          <div class="ae-weitere-infos-features">
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--zulassung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Voraussetzungen</h4>
+                <p>Bestehende Zulassung und festgelegter Zeitraum für die Saison. Versicherung muss für den gewünschten Zeitraum angepasst werden.</p>
+              </div>
+            </div>
+            
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--zulassung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Ablauf</h4>
+                <p>Saisonzeitraum wählen, Versicherung anpassen und alle Dokumente digital einreichen. Automatische Bearbeitung nach Zeitplan.</p>
+              </div>
+            </div>
+            
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--zulassung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Benötigte Dokumente</h4>
+                <p>Zulassungsbescheinigung, eVB-Nummer und Versicherungsnachweis für den gewünschten Zeitraum. Zeitraum-Dokumentation erforderlich.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="ae-weitere-infos-cta">
+            <a href="#" class="ae-btn ae-btn--primary ae-btn--large">
+              Saisonzulassung starten
+              <svg class="ae-btn__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </div>
+        </section>
+
+        {%- comment -%} Abmeldung Section {%- endcomment -%}
+        <section id="abmeldung" class="ae-weitere-infos-section">
+          <div class="ae-weitere-infos-section__header">
+            <h2 class="ae-weitere-infos-section__title">Abmeldung</h2>
+            <p class="ae-weitere-infos-section__description">
+              Fahrzeug abmelden war noch nie so einfach. Digital, schnell und ohne Behördengang.
+            </p>
+          </div>
+        </section>
+
+        {%- comment -%} Standard Abmeldung Subsection {%- endcomment -%}
+        <section id="standard-abmeldung" class="ae-weitere-infos-subsection">
+          <div class="ae-weitere-infos-subsection__header">
+            <h3 class="ae-weitere-infos-subsection__title">Standard Abmeldung</h3>
+            <p class="ae-weitere-infos-subsection__description">
+              Standardmäßige Fahrzeugabmeldung mit normaler Bearbeitungszeit.
+            </p>
+          </div>
+          
+          <div class="ae-weitere-infos-features">
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--abmeldung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Voraussetzungen</h4>
+                <p>Fahrzeugpapiere und Kennzeichen müssen vorhanden sein. Das Fahrzeug muss vollständig abgemeldet werden können.</p>
+              </div>
+            </div>
+            
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--abmeldung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Ablauf</h4>
+                <p>Kennzeichen entstempeln lassen, Online abmelden und alle Dokumente digital einreichen. Bearbeitung in wenigen Stunden.</p>
+              </div>
+            </div>
+            
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--abmeldung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Benötigte Dokumente</h4>
+                <p>Zulassungsbescheinigung und Kennzeichen-Fotos. Alle Dokumente müssen vollständig und lesbar sein.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="ae-weitere-infos-cta">
+            <a href="#" class="ae-btn ae-btn--primary ae-btn--large">
+              Standard Abmeldung starten
+              <svg class="ae-btn__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </div>
+        </section>
+
+        {%- comment -%} Express Abmeldung Subsection {%- endcomment -%}
+        <section id="express-abmeldung" class="ae-weitere-infos-subsection">
+          <div class="ae-weitere-infos-subsection__header">
+            <h3 class="ae-weitere-infos-subsection__title">Express Abmeldung</h3>
+            <p class="ae-weitere-infos-subsection__description">
+              Schnelle Abmeldung für eilige Fälle. Bearbeitung in 24 Stunden.
+            </p>
+          </div>
+          
+          <div class="ae-weitere-infos-features">
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--abmeldung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Express Service</h4>
+                <p>Prioritäts-Bearbeitung für dringende Fälle. Abmeldung innerhalb von 24 Stunden garantiert.</p>
+              </div>
+            </div>
+            
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--abmeldung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Voraussetzungen</h4>
+                <p>Alle Standard-Voraussetzungen plus Express-Zuschlag. Sofortige Bearbeitung nach Einreichung.</p>
+              </div>
+            </div>
+            
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--abmeldung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Benötigte Dokumente</h4>
+                <p>Gleiche Dokumente wie Standard-Abmeldung, aber mit Express-Priorität bearbeitet.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="ae-weitere-infos-cta">
+            <a href="#" class="ae-btn ae-btn--primary ae-btn--large">
+              Express Abmeldung starten
+              <svg class="ae-btn__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </div>
+        </section>
+
+        {%- comment -%} Kennzeichen Rückgabe Subsection {%- endcomment -%}
+        <section id="kennzeichen-rueckgabe" class="ae-weitere-infos-subsection">
+          <div class="ae-weitere-infos-subsection__header">
+            <h3 class="ae-weitere-infos-subsection__title">Kennzeichen Rückgabe</h3>
+            <p class="ae-weitere-infos-subsection__description">
+              Kennzeichen ordnungsgemäß zurückgeben und Abmeldung abschließen.
+            </p>
+          </div>
+          
+          <div class="ae-weitere-infos-features">
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--abmeldung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Voraussetzungen</h4>
+                <p>Kennzeichen müssen physisch vorhanden und in gutem Zustand sein. Entstempelung erforderlich.</p>
+              </div>
+            </div>
+            
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--abmeldung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Ablauf</h4>
+                <p>Kennzeichen entstempeln lassen, Rückgabe dokumentieren und Abmeldung online abschließen.</p>
+              </div>
+            </div>
+            
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--abmeldung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Benötigte Dokumente</h4>
+                <p>Kennzeichen-Fotos, Entstempelungsnachweis und Zulassungsbescheinigung. Vollständige Dokumentation der Rückgabe.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="ae-weitere-infos-cta">
+            <a href="#" class="ae-btn ae-btn--primary ae-btn--large">
+              Kennzeichen Rückgabe starten
+              <svg class="ae-btn__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </div>
+        </section>
+
+        {%- comment -%} Adress-/Namensänderung Section {%- endcomment -%}
+        <section id="adress-aenderung" class="ae-weitere-infos-section">
+          <div class="ae-weitere-infos-section__header">
+            <h2 class="ae-weitere-infos-section__title">Adress-/Namensänderung</h2>
+            <p class="ae-weitere-infos-section__description">
+              Adress- oder Namensänderung bei Fahrzeug. Digital und ohne Wartezeiten für alle Änderungen.
+            </p>
+          </div>
+        </section>
+
+        {%- comment -%} Adressänderung Subsection {%- endcomment -%}
+        <section id="adress-aenderung-service" class="ae-weitere-infos-subsection">
+          <div class="ae-weitere-infos-subsection__header">
+            <h3 class="ae-weitere-infos-subsection__title">Adressänderung</h3>
+            <p class="ae-weitere-infos-subsection__description">
+              Adressänderung bei Fahrzeugzulassung. Einfach und digital.
+            </p>
+          </div>
+          
+          <div class="ae-weitere-infos-features">
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--adress-aenderung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Voraussetzungen</h4>
+                <p>Meldebescheinigung und Fahrzeugpapiere müssen vorliegen. Änderung muss amtlich bestätigt sein.</p>
+              </div>
+            </div>
+            
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--adress-aenderung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Ablauf</h4>
+                <p>Änderung online melden, Dokumente hochladen und digitale Bearbeitung. Automatische Aktualisierung aller Daten.</p>
+              </div>
+            </div>
+            
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--adress-aenderung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Benötigte Dokumente</h4>
+                <p>Meldebescheinigung, Personalausweis und Zulassungsbescheinigung. Alle Dokumente müssen aktuell und vollständig sein.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="ae-weitere-infos-cta">
+            <a href="#" class="ae-btn ae-btn--primary ae-btn--large">
+              Adressänderung starten
+              <svg class="ae-btn__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </div>
+        </section>
+
+        {%- comment -%} Namensänderung Subsection {%- endcomment -%}
+        <section id="namens-aenderung" class="ae-weitere-infos-subsection">
+          <div class="ae-weitere-infos-subsection__header">
+            <h3 class="ae-weitere-infos-subsection__title">Namensänderung</h3>
+            <p class="ae-weitere-infos-subsection__description">
+              Namensänderung bei Fahrzeugzulassung. Rechtssicher und digital.
+            </p>
+          </div>
+          
+          <div class="ae-weitere-infos-features">
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--adress-aenderung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Voraussetzungen</h4>
+                <p>Amtliche Namensänderung muss nachgewiesen werden. Alle Dokumente müssen auf den neuen Namen ausgestellt sein.</p>
+              </div>
+            </div>
+            
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--adress-aenderung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Ablauf</h4>
+                <p>Namensänderung online melden, neue Ausweisdokumente hochladen und digitale Bearbeitung. Identitätsprüfung erforderlich.</p>
+              </div>
+            </div>
+            
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--adress-aenderung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Benötigte Dokumente</h4>
+                <p>Neuer Personalausweis, Namensänderungsurkunde und Zulassungsbescheinigung. Alle Dokumente auf neuen Namen.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="ae-weitere-infos-cta">
+            <a href="#" class="ae-btn ae-btn--primary ae-btn--large">
+              Namensänderung starten
+              <svg class="ae-btn__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </div>
+        </section>
+
+        {%- comment -%} Kombinierte Änderung Subsection {%- endcomment -%}
+        <section id="kombinierte-aenderung" class="ae-weitere-infos-subsection">
+          <div class="ae-weitere-infos-subsection__header">
+            <h3 class="ae-weitere-infos-subsection__title">Kombinierte Änderung</h3>
+            <p class="ae-weitere-infos-subsection__description">
+              Sowohl Adress- als auch Namensänderung in einem Vorgang. Effizient und kostengünstig.
+            </p>
+          </div>
+          
+          <div class="ae-weitere-infos-features">
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--adress-aenderung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Voraussetzungen</h4>
+                <p>Beide Änderungen müssen gleichzeitig erfolgen. Meldebescheinigung und Namensänderungsurkunde erforderlich.</p>
+              </div>
+            </div>
+            
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--adress-aenderung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Ablauf</h4>
+                <p>Kombinierte Änderung online melden, alle Dokumente hochladen und gemeinsame Bearbeitung. Ein Vorgang für beide Änderungen.</p>
+              </div>
+            </div>
+            
+            <div class="ae-weitere-infos-feature">
+              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--adress-aenderung">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ae-weitere-infos-feature__content">
+                <h4>Benötigte Dokumente</h4>
+                <p>Meldebescheinigung, neuer Personalausweis, Namensänderungsurkunde und Zulassungsbescheinigung. Alle Dokumente aktuell.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="ae-weitere-infos-cta">
+            <a href="#" class="ae-btn ae-btn--primary ae-btn--large">
+              Kombinierte Änderung starten
+              <svg class="ae-btn__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </div>
+        </section>
+
+        {%- comment -%} Trust Badges {%- endcomment -%}
+        <div class="ae-weitere-infos-trust">
+          <div class="ae-trust-badge">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Amtlich zertifiziert</span>
+          </div>
+          <div class="ae-trust-badge">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Express in 24h</span>
+          </div>
+          <div class="ae-trust-badge">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Bundesweit digital</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script
+  src="{{ 'ae-weitere-infos-page.js' | asset_url }}"
+  type="module"
+  defer="defer"
+></script>
+
+{% schema %}
+{
+  "name": "AE Weitere Infos Page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "page_title",
+      "label": "Seitentitel",
+      "default": "Weitere Infos"
+    },
+    {
+      "type": "text",
+      "id": "page_subtitle",
+      "label": "Untertitel",
+      "default": "Alles was Sie über unsere Services wissen müssen"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumbs",
+      "label": "Breadcrumbs anzeigen",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "animation",
+      "label": "Animation",
+      "options": [
+        { "value": "fade-up", "label": "Fade Up" },
+        { "value": "fade-down", "label": "Fade Down" },
+        { "value": "fade-left", "label": "Fade Left" },
+        { "value": "fade-right", "label": "Fade Right" },
+        { "value": "zoom-in", "label": "Zoom In" },
+        { "value": "none", "label": "Keine Animation" }
+      ],
+      "default": "fade-up"
+    }
+  ],
+  "presets": [
+    {
+      "name": "AE Weitere Infos Page"
+    }
+  ]
+}
+{% endschema %}

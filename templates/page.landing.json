@@ -15,7 +15,9 @@
         "role_2_cta_link": "/pages/kennzeichen",
         "show_trust_badges": true,
         "enable_glow": true,
-        "animation": "fade-up"
+        "animation": "fade-up",
+        "padding_top_desktop": 120,
+        "padding_bottom_desktop": 120
       },
       "blocks": {
         "zulassung_feature_1": {
@@ -75,3 +77,4 @@
     "ae_landing_switcher"
   ]
 }
+

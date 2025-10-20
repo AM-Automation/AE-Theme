@@ -1,0 +1,100 @@
+{% comment %}
+  Cookie Consent Banner - Apple Design
+  Modern cookie consent with German text and Apple-like aesthetics
+{% endcomment %}
+
+<cookie-consent-banner class="cookie-consent-banner" role="dialog" aria-labelledby="cookie-consent-title" aria-describedby="cookie-consent-description">
+  <div class="cookie-consent-banner__container">
+    <div class="cookie-consent-banner__content">
+      <h2 id="cookie-consent-title" class="cookie-consent-banner__title">
+        Cookie-Einstellungen
+      </h2>
+      <p id="cookie-consent-description" class="cookie-consent-banner__text">
+        Wir und unsere Partner, einschließlich Shopify, verwenden Cookies und andere Technologien, um Ihre Erfahrung zu personalisieren, Ihnen Anzeigen zu zeigen und Analysen durchzuführen. Wir werden keine Cookies oder andere Technologien für diese Zwecke verwenden, es sei denn, Sie akzeptieren sie. 
+        <a href="{{ pages.privacy-policy.url | default: '#' }}" 
+           class="cookie-consent-banner__link" 
+           data-cookie-privacy-link
+           target="_blank" 
+           rel="noopener">
+          Erfahren Sie mehr in unserer Datenschutzerklärung
+        </a>.
+      </p>
+    </div>
+    
+    <div class="cookie-consent-banner__actions">
+      <button 
+        type="button" 
+        class="cookie-consent-banner__button cookie-consent-banner__button--primary"
+        data-cookie-accept
+        aria-label="Alle Cookies akzeptieren">
+        Akzeptieren
+      </button>
+      
+      <button 
+        type="button" 
+        class="cookie-consent-banner__button cookie-consent-banner__button--secondary"
+        data-cookie-decline
+        aria-label="Alle Cookies ablehnen">
+        Ablehnen
+      </button>
+      
+      <a href="{{ pages.privacy-policy.url | default: '#' }}" 
+         class="cookie-consent-banner__preferences"
+         data-cookie-preferences
+         target="_blank" 
+         rel="noopener">
+        Einstellungen verwalten
+      </a>
+    </div>
+  </div>
+</cookie-consent-banner>
+
+{% comment %}
+  Alternative English version (uncomment if needed):
+  
+  <cookie-consent-banner class="cookie-consent-banner" role="dialog" aria-labelledby="cookie-consent-title" aria-describedby="cookie-consent-description">
+    <div class="cookie-consent-banner__container">
+      <div class="cookie-consent-banner__content">
+        <h2 id="cookie-consent-title" class="cookie-consent-banner__title">
+          Cookie Settings
+        </h2>
+        <p id="cookie-consent-description" class="cookie-consent-banner__text">
+          We and our partners, including Shopify, use cookies and other technologies to personalize your experience, show you ads, and perform analytics. We will not use cookies or other technologies for these purposes unless you accept them. 
+          <a href="{{ pages.privacy-policy.url | default: '#' }}" 
+             class="cookie-consent-banner__link" 
+             data-cookie-privacy-link
+             target="_blank" 
+             rel="noopener">
+            Learn more in our Privacy Policy
+          </a>.
+        </p>
+      </div>
+      
+      <div class="cookie-consent-banner__actions">
+        <button 
+          type="button" 
+          class="cookie-consent-banner__button cookie-consent-banner__button--primary"
+          data-cookie-accept
+          aria-label="Accept all cookies">
+          Accept
+        </button>
+        
+        <button 
+          type="button" 
+          class="cookie-consent-banner__button cookie-consent-banner__button--secondary"
+          data-cookie-decline
+          aria-label="Decline all cookies">
+          Decline
+        </button>
+        
+        <a href="{{ pages.privacy-policy.url | default: '#' }}" 
+           class="cookie-consent-banner__preferences"
+           data-cookie-preferences
+           target="_blank" 
+           rel="noopener">
+          Manage preferences
+        </a>
+      </div>
+    </div>
+  </cookie-consent-banner>
+{% endcomment %}

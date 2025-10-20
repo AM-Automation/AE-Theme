@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "main": {
+      "type": "ae-weitere-infos-page",
+      "settings": {
+        "page_title": "Weitere Infos",
+        "page_subtitle": "Alles was Sie über unsere Services wissen müssen",
+        "show_breadcrumbs": true,
+        "animation": "fade-up"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

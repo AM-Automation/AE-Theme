@@ -1,6 +1,7 @@
 // AE Header JavaScript
 (() => {
-  console.log('AE Header loaded successfully');
+  // Production: Remove console.log for performance
+  // console.log('AE Header loaded successfully');
   
   // Mobile Menu Toggle Functionality
   const mobileMenuToggle = document.querySelector('[data-mobile-menu-toggle]');
@@ -16,10 +17,11 @@
       document.body.style.overflow = 'hidden';
       
       // Animate burger lines
-      const lines = burgerButton.querySelectorAll('.ae-header__burger-line');
-      lines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-      lines[1].style.opacity = '0';
-      lines[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+      /** @type {NodeListOf<HTMLElement>} */
+      const lines = /** @type {any} */ (burgerButton.querySelectorAll('.ae-header__burger-line'));
+      if (lines[0]) lines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+      if (lines[1]) lines[1].style.opacity = '0';
+      if (lines[2]) lines[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
     }
   }
   
@@ -31,10 +33,11 @@
       document.body.style.overflow = '';
       
       // Reset burger lines
-      const lines = burgerButton.querySelectorAll('.ae-header__burger-line');
-      lines[0].style.transform = '';
-      lines[1].style.opacity = '';
-      lines[2].style.transform = '';
+      /** @type {NodeListOf<HTMLElement>} */
+      const lines = /** @type {any} */ (burgerButton.querySelectorAll('.ae-header__burger-line'));
+      if (lines[0]) lines[0].style.transform = '';
+      if (lines[1]) lines[1].style.opacity = '';
+      if (lines[2]) lines[2].style.transform = '';
     }
   }
   
@@ -68,6 +71,37 @@
     if (window.innerWidth > 1024 && mobileMenu && mobileMenu.classList.contains('active')) {
       closeMobileMenu();
     }
+  });
+
+  // Make header stay at 20px once banner is off-screen
+  document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('[data-ae-header]') || document.querySelector('.ae-header');
+    if (!header) return;
+    const COLLAPSE_Y = 80; // sync with banner logic
+    let ticking = false;
+    let isFixed = false;
+
+    const onScroll = () => {
+      const y = window.scrollY || window.pageYOffset;
+      if (!isFixed && y > COLLAPSE_Y) {
+        header.classList.add('is-fixed');
+        isFixed = true;
+      } else if (isFixed && y <= COLLAPSE_Y) {
+        header.classList.remove('is-fixed');
+        isFixed = false;
+      }
+      ticking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // initialize state
+    onScroll();
   });
   
 })();
