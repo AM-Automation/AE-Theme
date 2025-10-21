@@ -73,69 +73,79 @@
     }
   });
 
-  // Make header sticky with smooth transitions - SIMPLIFIED VERSION
+  // Make header sticky - CLEAN SIMPLE VERSION using position: fixed
   document.addEventListener('DOMContentLoaded', () => {
-    // Try multiple selectors to find the header
     const header = document.querySelector('[data-ae-header]') || 
                    document.querySelector('.ae-header') ||
-                   document.querySelector('[id*="shopify-section"][id*="header"]') ||
-                   document.querySelector('#shopify-section-sections--19397825560915__header');
+                   document.querySelector('[id*="shopify-section"][id*="header"]');
     
     if (!header) {
-      console.log('Header element not found');
-      console.log('Available elements:', document.querySelectorAll('[id*="header"]'));
+      console.log('❌ Header not found');
       return;
     }
     
-    // Use only the header element, not the header-group
-    const targetElement = header;
+    console.log('✅ Header found:', header);
     
-    if (!targetElement) {
-      console.log('No target element found');
-      return;
-    }
-    
-    console.log('Header found:', header);
-    console.log('Target element:', targetElement);
-    console.log('Target element ID:', targetElement.id);
-    
-    const COLLAPSE_Y = 0; // Header becomes sticky immediately when banner edge appears
-    const HYSTERESIS = 5; // Add 5px hysteresis to prevent flickering
-    let ticking = false;
     let isSticky = false;
-
-    const onScroll = () => {
-      const y = window.scrollY || window.pageYOffset;
+    let headerOriginalTop = 0;
+    
+    const makeSticky = () => {
+      if (isSticky) return;
       
-      // Add hysteresis to prevent flickering at the threshold
-      const stickyThreshold = isSticky ? COLLAPSE_Y - HYSTERESIS : COLLAPSE_Y + HYSTERESIS;
+      isSticky = true;
+      header.classList.add('is-sticky');
       
-      // Simple logic with hysteresis: sticky when banner edge appears
-      if (!isSticky && y > stickyThreshold) {
-        targetElement.classList.add('is-sticky');
-        isSticky = true;
-        console.log('✅ Header is now sticky (banner edge visible) at scroll position:', y);
-        
-        // Force a reflow to ensure styles are applied
-        targetElement.getBoundingClientRect();
-      } else if (isSticky && y <= stickyThreshold) {
-        targetElement.classList.remove('is-sticky');
-        isSticky = false;
-        console.log('❌ Header is no longer sticky (at top) at scroll position:', y);
+      // Use position: fixed instead of sticky to avoid conflicts
+      header.setAttribute('style', 'position: fixed !important; top: 20px !important; left: 50% !important; transform: translateX(-50%) !important; width: 100% !important; max-width: 100vw !important; z-index: 1000 !important; margin: 0 !important; padding: 0 !important;');
+      
+      // Fix container height
+      const container = header.querySelector('.ae-header__container');
+      if (container) {
+        container.setAttribute('style', 'height: 60px !important; min-height: 60px !important; max-height: 60px !important; padding: 12px var(--container-padding) !important; background: #252525 !important; border: 1px solid rgba(255, 255, 255, 0.12) !important; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important; border-radius: 16px !important; position: relative !important; margin: 0 !important; transform: none !important;');
       }
       
-      ticking = false;
+      console.log('🔒 Header is now FIXED at top');
     };
-
+    
+    const removeSticky = () => {
+      if (!isSticky) return;
+      
+      isSticky = false;
+      header.classList.remove('is-sticky');
+      header.removeAttribute('style');
+      
+      const container = header.querySelector('.ae-header__container');
+      if (container) {
+        container.removeAttribute('style');
+      }
+      
+      console.log('🔓 Header is now normal');
+    };
+    
+    const checkScroll = () => {
+      const scrollY = window.scrollY || window.pageYOffset;
+      
+      if (scrollY > 5 && !isSticky) {
+        makeSticky();
+      } else if (scrollY <= 5 && isSticky) {
+        removeSticky();
+      }
+    };
+    
+    // Listen to scroll with throttling
+    let ticking = false;
     window.addEventListener('scroll', () => {
       if (!ticking) {
-        requestAnimationFrame(onScroll);
+        requestAnimationFrame(() => {
+          checkScroll();
+          ticking = false;
+        });
         ticking = true;
       }
     }, { passive: true });
-
-    // initialize state
-    onScroll();
+    
+    // Initial check
+    checkScroll();
   });
   
 })();
