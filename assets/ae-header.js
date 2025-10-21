@@ -144,6 +144,26 @@
         removeSticky();
       }
     };
+
+    // Measure vertical gap between header frame and first main section frame
+    const measureGap = () => {
+      /** @type {HTMLElement|null} */
+      const headerContainer = /** @type {any} */ (header.querySelector('.ae-header__container'));
+      /** Try common selectors for the first prominent section under header */
+      const nextSection = /** @type {HTMLElement|null} */ (document.querySelector('[data-section-type="hero"], .shopify-section:not([id*="header"]) .section, .shopify-section:not([id*="header"])'));
+
+      if (!headerContainer || !nextSection) {
+        console.log('ℹ️ Gap measure skipped (container or next section not found)');
+        return;
+      }
+
+      const headerRect = headerContainer.getBoundingClientRect();
+      const sectionRect = nextSection.getBoundingClientRect();
+
+      // Distance between outer frames: bottom of header container to top of next section
+      const gapPx = Math.round(sectionRect.top - headerRect.bottom);
+      console.log(`📏 Header→Section gap: ${gapPx}px`);
+    };
     
     // Listen to scroll with throttling
     let ticking = false;
@@ -151,6 +171,7 @@
       if (!ticking) {
         requestAnimationFrame(() => {
           checkScroll();
+          measureGap();
           ticking = false;
         });
         ticking = true;
@@ -159,6 +180,7 @@
     
     // Initial check
     checkScroll();
+    measureGap();
   });
   
 })();
