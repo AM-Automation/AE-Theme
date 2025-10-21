@@ -96,13 +96,26 @@
       header.classList.add('is-sticky');
       
       // Use position: fixed instead of sticky to avoid conflicts
-      header.setAttribute('style', 'position: fixed !important; top: 20px !important; left: 50% !important; transform: translateX(-50%) !important; width: 100% !important; max-width: 100vw !important; z-index: 1000 !important; margin: 0 !important; padding: 0 !important;');
+      // Use left: 0 and right: 0 for centering instead of transform
+      header.setAttribute('style', 'position: fixed !important; top: 20px !important; left: 0 !important; right: 0 !important; width: 100% !important; max-width: 100vw !important; z-index: 1000 !important; margin-left: auto !important; margin-right: auto !important; padding: 0 !important; transform: none !important;');
       
-      // Fix container height
+      // Fix container height and ensure it's also centered
       const container = header.querySelector('.ae-header__container');
       if (container) {
-        container.setAttribute('style', 'height: 60px !important; min-height: 60px !important; max-height: 60px !important; padding: 12px var(--container-padding) !important; background: #252525 !important; border: 1px solid rgba(255, 255, 255, 0.12) !important; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important; border-radius: 16px !important; position: relative !important; margin: 0 !important; transform: none !important;');
+        container.setAttribute('style', 'height: 60px !important; min-height: 60px !important; max-height: 60px !important; padding: 12px var(--container-padding) !important; background: #252525 !important; border: 1px solid rgba(255, 255, 255, 0.12) !important; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important; border-radius: 16px !important; position: relative !important; margin: 0 auto !important; transform: none !important; max-width: 1280px !important;');
       }
+      
+      // Force re-apply styles every 100ms to override interference
+      const forceStyles = setInterval(() => {
+        if (!isSticky) {
+          clearInterval(forceStyles);
+          return;
+        }
+        header.setAttribute('style', 'position: fixed !important; top: 20px !important; left: 0 !important; right: 0 !important; width: 100% !important; max-width: 100vw !important; z-index: 1000 !important; margin-left: auto !important; margin-right: auto !important; padding: 0 !important; transform: none !important;');
+        if (container) {
+          container.setAttribute('style', 'height: 60px !important; min-height: 60px !important; max-height: 60px !important; padding: 12px var(--container-padding) !important; background: #252525 !important; border: 1px solid rgba(255, 255, 255, 0.12) !important; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important; border-radius: 16px !important; position: relative !important; margin: 0 auto !important; transform: none !important; max-width: 1280px !important;');
+        }
+      }, 100);
       
       console.log('🔒 Header is now FIXED at top');
     };
