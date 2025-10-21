@@ -22,6 +22,8 @@ class AEWeitereInfosPage {
     this.setupActiveStates();
     this.setupScrollDetection();
     this.setupCollapseBehavior();
+    this.setupAnimations();
+    this.setupParallax();
   }
 
   setupNavigation() {
@@ -302,6 +304,86 @@ class AEWeitereInfosPage {
   updatePageTheme() {
     const color = this.getCurrentSectionColor();
     document.documentElement.style.setProperty('--ae-current-section-color', color);
+  }
+
+  setupAnimations() {
+    // Check if animations should be enabled
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      return;
+    }
+
+    // Setup intersection observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    this.animationObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('ae-animate-in');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all elements with animation classes
+    const animatedElements = document.querySelectorAll('[class*="ae-animate-"]');
+    animatedElements.forEach((element, index) => {
+      // Add stagger delay
+      if (index > 0) {
+        element.classList.add(`ae-stagger-${Math.min(index, 5)}`);
+      }
+      this.animationObserver.observe(element);
+    });
+  }
+
+  setupParallax() {
+    // Check if parallax should be enabled
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      return;
+    }
+
+    const parallaxElements = document.querySelectorAll('.ae-parallax');
+    if (parallaxElements.length === 0) return;
+
+    let ticking = false;
+
+    const updateParallax = () => {
+      const scrolled = window.pageYOffset;
+      
+      parallaxElements.forEach(element => {
+        const speed = element.dataset.parallaxSpeed || 0.5;
+        const yPos = -(scrolled * speed);
+        element.style.transform = `translateY(${yPos}px)`;
+      });
+      
+      ticking = false;
+    };
+
+    const requestTick = () => {
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', requestTick);
+  }
+
+  // Method to add animation classes to elements
+  addAnimationClass(element, animationType = 'fade-up') {
+    if (element) {
+      element.classList.add(`ae-animate-${animationType}`);
+    }
+  }
+
+  // Method to remove animation classes
+  removeAnimationClass(element) {
+    if (element) {
+      element.classList.remove('ae-animate-fade-up', 'ae-animate-fade-down', 'ae-animate-fade-left', 'ae-animate-fade-right', 'ae-animate-slide-up', 'ae-animate-zoom-in');
+    }
   }
 }
 

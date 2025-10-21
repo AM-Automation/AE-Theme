@@ -3276,6 +3276,98 @@ section.ae-landing-switcher,
    AE WEITERE INFOS PAGE STYLES
    ============================================ */
 
+/* Motion and Animation Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Animation Classes */
+.ae-animate-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.ae-animate-fade-up.ae-animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ae-animate-fade-down {
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.ae-animate-fade-down.ae-animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ae-animate-fade-left {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.ae-animate-fade-left.ae-animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.ae-animate-fade-right {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.ae-animate-fade-right.ae-animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.ae-animate-slide-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.ae-animate-slide-up.ae-animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ae-animate-zoom-in {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.ae-animate-zoom-in.ae-animate-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Parallax Support */
+.ae-parallax {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Staggered Animation */
+.ae-stagger-1 { animation-delay: 0.1s; }
+.ae-stagger-2 { animation-delay: 0.2s; }
+.ae-stagger-3 { animation-delay: 0.3s; }
+.ae-stagger-4 { animation-delay: 0.4s; }
+.ae-stagger-5 { animation-delay: 0.5s; }
+
 :root {
   --ae-color-zulassung: #ff6b35;
   --ae-color-abmeldung: #3b82f6;
@@ -3685,6 +3777,166 @@ section.ae-landing-switcher,
   max-width: 600px;
 }
 
+/* Steps Layout */
+.ae-weitere-infos-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.ae-weitere-infos-step {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  background: #1a1a1a;
+  border-radius: 12px;
+  border: 1px solid #2a2a2a;
+  transition: all 0.3s ease;
+}
+
+.ae-weitere-infos-step:hover {
+  border-color: #3a3a3a;
+  transform: translateY(-2px);
+}
+
+.ae-weitere-infos-step__number {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ae-color-zulassung);
+  color: #ffffff;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+/* Step Colors for different sections */
+.ae-weitere-infos-subsection[id*="abmeldung"] .ae-weitere-infos-step__number {
+  background: var(--ae-color-abmeldung);
+}
+
+.ae-weitere-infos-subsection[id*="adress"] .ae-weitere-infos-step__number {
+  background: var(--ae-color-adress-aenderung);
+}
+
+.ae-weitere-infos-subsection[id*="abmeldung"] .ae-weitere-infos-step__list li::before {
+  color: var(--ae-color-abmeldung);
+}
+
+.ae-weitere-infos-subsection[id*="adress"] .ae-weitere-infos-step__list li::before {
+  color: var(--ae-color-adress-aenderung);
+}
+
+.ae-weitere-infos-step__content {
+  flex: 1;
+}
+
+.ae-weitere-infos-step__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.ae-weitere-infos-step__description {
+  font-size: 1rem;
+  color: #a0a0a0;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.ae-weitere-infos-step__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ae-weitere-infos-step__list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #c0c0c0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.ae-weitere-infos-step__list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--ae-color-zulassung);
+  font-weight: 600;
+}
+
+/* Requirements Section */
+.ae-weitere-infos-requirements {
+  background: #1a1a1a;
+  border-radius: 12px;
+  border: 1px solid #2a2a2a;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.ae-weitere-infos-requirements__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.ae-weitere-infos-requirements__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ae-weitere-infos-requirements__list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #a0a0a0;
+  line-height: 1.6;
+}
+
+.ae-weitere-infos-requirements__list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--ae-color-adress-aenderung);
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* Note Section */
+.ae-weitere-infos-note {
+  background: #1a1a1a;
+  border-left: 4px solid var(--ae-color-adress-aenderung);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.ae-weitere-infos-note__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+.ae-weitere-infos-note__text {
+  color: #a0a0a0;
+  line-height: 1.6;
+  margin: 0;
+}
+
 .ae-weitere-infos-section__header {
   margin-bottom: 2.5rem;
 }
@@ -3854,11 +4106,47 @@ section.ae-landing-switcher,
 
 @media (max-width: 480px) {
   .ae-weitere-infos-page {
-    padding: 1rem 0;
+    padding: 0.5rem;
   }
   
   .ae-weitere-infos-title {
-    font-size: 1.875rem;
+    font-size: 1.75rem;
+  }
+  
+  .ae-weitere-infos-subtitle {
+    font-size: 0.875rem;
+  }
+  
+  .ae-weitere-infos-mobile-nav__container {
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+  
+  .ae-weitere-infos-mobile-nav__item {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .ae-weitere-infos-step {
+    padding: 0.75rem;
+  }
+  
+  .ae-weitere-infos-step__number {
+    width: 28px;
+    height: 28px;
+    font-size: 0.875rem;
+  }
+  
+  .ae-weitere-infos-step__title {
+    font-size: 1rem;
+  }
+  
+  .ae-weitere-infos-step__description {
+    font-size: 0.8125rem;
+  }
+  
+  .ae-weitere-infos-step__list li {
+    font-size: 0.8125rem;
   }
   
   .ae-weitere-infos-nav {

@@ -3,7 +3,7 @@
   Depict.ai-inspired design with 3 main categories and subchapters
 {%- endcomment -%}
 
-<div class="ae-weitere-infos-page">
+<div class="ae-weitere-infos-page" role="main" aria-label="Weitere Informationen zu unseren Services">
   <div class="ae-container">
     
     {%- comment -%} Header Section {%- endcomment -%}
@@ -22,27 +22,27 @@
       </div>
     </div>
 
-    {%- comment -%} Mobile Navigation {%- endcomment -%}
-    <div class="ae-weitere-infos-mobile-nav">
-      <div class="ae-weitere-infos-mobile-nav__container">
-        <a href="#zulassung" class="ae-weitere-infos-mobile-nav__item ae-weitere-infos-mobile-nav__item--zulassung">
-          <div class="ae-weitere-infos-mobile-nav__icon">
+      {%- comment -%} Mobile Navigation {%- endcomment -%}
+      <nav class="ae-weitere-infos-mobile-nav" role="navigation" aria-label="Mobile Navigation">
+        <div class="ae-weitere-infos-mobile-nav__container">
+        <a href="#zulassung" class="ae-weitere-infos-mobile-nav__item ae-weitere-infos-mobile-nav__item--zulassung" aria-label="Zur Zulassung Sektion springen">
+          <div class="ae-weitere-infos-mobile-nav__icon" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
           <span>Zulassung</span>
         </a>
-        <a href="#abmeldung" class="ae-weitere-infos-mobile-nav__item ae-weitere-infos-mobile-nav__item--abmeldung">
-          <div class="ae-weitere-infos-mobile-nav__icon">
+        <a href="#abmeldung" class="ae-weitere-infos-mobile-nav__item ae-weitere-infos-mobile-nav__item--abmeldung" aria-label="Zur Abmeldung Sektion springen">
+          <div class="ae-weitere-infos-mobile-nav__icon" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M4 4h12a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
           <span>Abmeldung</span>
         </a>
-        <a href="#adress-aenderung" class="ae-weitere-infos-mobile-nav__item ae-weitere-infos-mobile-nav__item--adress-aenderung">
-          <div class="ae-weitere-infos-mobile-nav__icon">
+        <a href="#adress-aenderung" class="ae-weitere-infos-mobile-nav__item ae-weitere-infos-mobile-nav__item--adress-aenderung" aria-label="Zur Adress-/Namensänderung Sektion springen">
+          <div class="ae-weitere-infos-mobile-nav__icon" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -56,8 +56,8 @@
     {%- comment -%} Desktop Layout {%- endcomment -%}
     <div class="ae-weitere-infos-layout">
       {%- comment -%} Navigation Sidebar {%- endcomment -%}
-      <div class="ae-weitere-infos-sidebar">
-        <nav class="ae-weitere-infos-nav">
+      <aside class="ae-weitere-infos-sidebar" role="complementary" aria-label="Navigation">
+        <nav class="ae-weitere-infos-nav" role="navigation" aria-label="Hauptnavigation">
           
           {%- comment -%} Zulassung Category - Expanded {%- endcomment -%}
           <div class="ae-weitere-infos-nav__category ae-weitere-infos-nav__category--zulassung ae-weitere-infos-nav__category--expanded">
@@ -70,8 +70,8 @@
               <h3 class="ae-weitere-infos-nav__title">Zulassung</h3>
             </div>
             
-            <div class="ae-weitere-infos-nav__subchapters">
-              <a href="#neuzulassung" class="ae-weitere-infos-nav__subchapter ae-weitere-infos-nav__subchapter--active">Neuzulassung</a>
+            <div class="ae-weitere-infos-nav__subchapters" role="group" aria-label="Zulassung Unterkapitel">
+              <a href="#neuzulassung" class="ae-weitere-infos-nav__subchapter ae-weitere-infos-nav__subchapter--active" aria-current="page">Neuzulassung</a>
               <a href="#halterwechsel" class="ae-weitere-infos-nav__subchapter">Halterwechsel</a>
               <a href="#umschreibung" class="ae-weitere-infos-nav__subchapter">Umschreibung</a>
               <a href="#saisonzulassung" class="ae-weitere-infos-nav__subchapter">Saisonzulassung</a>
@@ -89,7 +89,7 @@
               <h3 class="ae-weitere-infos-nav__title">Abmeldung</h3>
             </div>
             
-            <div class="ae-weitere-infos-nav__subchapters ae-weitere-infos-nav__subchapters--hidden">
+            <div class="ae-weitere-infos-nav__subchapters ae-weitere-infos-nav__subchapters--hidden" role="group" aria-label="Abmeldung Unterkapitel">
               <a href="#standard-abmeldung" class="ae-weitere-infos-nav__subchapter">Standard Abmeldung</a>
               <a href="#express-abmeldung" class="ae-weitere-infos-nav__subchapter">Express Abmeldung</a>
               <a href="#kennzeichen-rueckgabe" class="ae-weitere-infos-nav__subchapter">Kennzeichen Rückgabe</a>
@@ -108,24 +108,26 @@
               <h3 class="ae-weitere-infos-nav__title">Adress-/Namensänderung</h3>
             </div>
             
-            <div class="ae-weitere-infos-nav__subchapters ae-weitere-infos-nav__subchapters--hidden">
+            <div class="ae-weitere-infos-nav__subchapters ae-weitere-infos-nav__subchapters--hidden" role="group" aria-label="Adress-/Namensänderung Unterkapitel">
               <a href="#adress-aenderung-service" class="ae-weitere-infos-nav__subchapter">Adressänderung</a>
               <a href="#namens-aenderung" class="ae-weitere-infos-nav__subchapter">Namensänderung</a>
               <a href="#kombinierte-aenderung" class="ae-weitere-infos-nav__subchapter">Kombinierte Änderung</a>
             </div>
           </div>
         </nav>
-      </div>
+      </aside>
 
       {%- comment -%} Main Content {%- endcomment -%}
-      <div class="ae-weitere-infos-content">
+      <main class="ae-weitere-infos-content" role="main" aria-label="Hauptinhalt">
         
         {%- comment -%} Zulassung Section {%- endcomment -%}
         <section id="zulassung" class="ae-weitere-infos-section">
           <div class="ae-weitere-infos-section__header">
-            <h2 class="ae-weitere-infos-section__title">Zulassung</h2>
+            <h2 class="ae-weitere-infos-section__title">Online-Zulassung</h2>
             <p class="ae-weitere-infos-section__description">
-              Vollständige Kfz-Zulassung online. Komplett digital, rechtssicher und in wenigen Minuten erledigt.
+              Seit September 2023 ist die komplette Zulassung online möglich – ohne Gang zur Zulassungsstelle. 
+              Unser Service ist für alle Fahrzeugarten verfügbar und bietet eine Geld-zurück-Garantie, 
+              24/7-Service und transparente Kosten von 134,90 €.
             </p>
           </div>
         </section>
@@ -139,48 +141,81 @@
             </p>
           </div>
           
-          <div class="ae-weitere-infos-features">
-            <div class="ae-weitere-infos-feature">
-              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--zulassung">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <div class="ae-weitere-infos-feature__content">
-                <h4>Voraussetzungen</h4>
-                <p>Fahrzeugpapiere, Personalausweis, eVB-Nummer und gültige Versicherung. Alle Dokumente müssen vollständig und aktuell sein.</p>
-              </div>
-            </div>
-            
-            <div class="ae-weitere-infos-feature">
-              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--zulassung">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <div class="ae-weitere-infos-feature__content">
-                <h4>Ablauf</h4>
-                <p>Online-Formular ausfüllen, Identitätsprüfung durchführen und Antrag digital einreichen. Bearbeitung erfolgt automatisch.</p>
+          <div class="ae-weitere-infos-steps">
+            <div class="ae-weitere-infos-step">
+              <div class="ae-weitere-infos-step__number">1</div>
+              <div class="ae-weitere-infos-step__content">
+                <h4 class="ae-weitere-infos-step__title">Dokumente & Kennzeichen</h4>
+                <p class="ae-weitere-infos-step__description">
+                  Sie benötigen: gültigen Ausweis, Zulassungsbescheinigung Teil I/II, Kennzeichen und eVB-Nummer. 
+                  Alle Dokumente müssen vollständig und aktuell sein.
+                </p>
+                <ul class="ae-weitere-infos-step__list">
+                  <li>Gültiger Personalausweis oder Reisepass</li>
+                  <li>Zulassungsbescheinigung Teil I (Fahrzeugschein)</li>
+                  <li>Zulassungsbescheinigung Teil II (Fahrzeugbrief)</li>
+                  <li>Kennzeichen (falls vorhanden)</li>
+                  <li>eVB-Nummer von Ihrer Versicherung</li>
+                </ul>
               </div>
             </div>
             
-            <div class="ae-weitere-infos-feature">
-              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--zulassung">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+            <div class="ae-weitere-infos-step">
+              <div class="ae-weitere-infos-step__number">2</div>
+              <div class="ae-weitere-infos-step__content">
+                <h4 class="ae-weitere-infos-step__title">Daten eingeben</h4>
+                <p class="ae-weitere-infos-step__description">
+                  Die Daten aus Ihren Dokumenten werden in eine benutzerfreundliche Maske übertragen. 
+                  Dieser Schritt dauert etwa 5 Minuten.
+                </p>
+                <ul class="ae-weitere-infos-step__list">
+                  <li>Automatische Datenextraktion aus Dokumenten</li>
+                  <li>Benutzerfreundliche Eingabemaske</li>
+                  <li>Automatische Plausibilitätsprüfung</li>
+                  <li>Sofortige Fehlererkennung und Korrekturhinweise</li>
+                </ul>
               </div>
-              <div class="ae-weitere-infos-feature__content">
-                <h4>Benötigte Dokumente</h4>
-                <p>Fahrzeugschein, Fahrzeugbrief, SEPA-Mandat und eVB-Nummer. Alle Dokumente digital hochladen.</p>
+            </div>
+            
+            <div class="ae-weitere-infos-step">
+              <div class="ae-weitere-infos-step__number">3</div>
+              <div class="ae-weitere-infos-step__content">
+                <h4 class="ae-weitere-infos-step__title">Zahlung</h4>
+                <p class="ae-weitere-infos-step__description">
+                  Gesamtkosten: 134,90 € inklusive aller Gebühren. Zahlung per Rechnung/Klarna, 
+                  Kreditkarte, PayPal, Apple Pay oder Google Pay.
+                </p>
+                <ul class="ae-weitere-infos-step__list">
+                  <li>Rechnung/Klarna (14 Tage Zahlungsziel)</li>
+                  <li>Kreditkarte (Visa, Mastercard, American Express)</li>
+                  <li>PayPal</li>
+                  <li>Apple Pay</li>
+                  <li>Google Pay</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="ae-weitere-infos-step">
+              <div class="ae-weitere-infos-step__number">4</div>
+              <div class="ae-weitere-infos-step__content">
+                <h4 class="ae-weitere-infos-step__title">Foto-Ident</h4>
+                <p class="ae-weitere-infos-step__description">
+                  Identitätsprüfung durch Foto-Ident-Verfahren: Ausweis fotografieren, Selfie aufnehmen 
+                  und digitale Unterschrift via SMS-Code.
+                </p>
+                <ul class="ae-weitere-infos-step__list">
+                  <li>Ausweis vor und hinten fotografieren</li>
+                  <li>Selfie zur Identitätsprüfung</li>
+                  <li>Digitale Unterschrift via SMS-Code</li>
+                  <li>Sofortige Verarbeitung und Bestätigung</li>
+                </ul>
               </div>
             </div>
           </div>
           
           <div class="ae-weitere-infos-cta">
             <a href="#" class="ae-btn ae-btn--primary ae-btn--large">
-              Neuzulassung starten
+              Jetzt Fahrzeug anmelden
               <svg class="ae-btn__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path d="M4 10h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
               </svg>
@@ -365,9 +400,10 @@
         {%- comment -%} Abmeldung Section {%- endcomment -%}
         <section id="abmeldung" class="ae-weitere-infos-section">
           <div class="ae-weitere-infos-section__header">
-            <h2 class="ae-weitere-infos-section__title">Abmeldung</h2>
+            <h2 class="ae-weitere-infos-section__title">Online-Abmeldung</h2>
             <p class="ae-weitere-infos-section__description">
-              Fahrzeug abmelden war noch nie so einfach. Digital, schnell und ohne Behördengang.
+              Die Online-Abmeldung ist ohne vollständige Identifikation möglich. 
+              Einfach, schnell und ohne Behördengang – in nur wenigen Schritten erledigt.
             </p>
           </div>
         </section>
@@ -381,48 +417,62 @@
             </p>
           </div>
           
-          <div class="ae-weitere-infos-features">
-            <div class="ae-weitere-infos-feature">
-              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--abmeldung">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <div class="ae-weitere-infos-feature__content">
-                <h4>Voraussetzungen</h4>
-                <p>Fahrzeugpapiere und Kennzeichen müssen vorhanden sein. Das Fahrzeug muss vollständig abgemeldet werden können.</p>
-              </div>
-            </div>
-            
-            <div class="ae-weitere-infos-feature">
-              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--abmeldung">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <div class="ae-weitere-infos-feature__content">
-                <h4>Ablauf</h4>
-                <p>Kennzeichen entstempeln lassen, Online abmelden und alle Dokumente digital einreichen. Bearbeitung in wenigen Stunden.</p>
+          <div class="ae-weitere-infos-steps">
+            <div class="ae-weitere-infos-step">
+              <div class="ae-weitere-infos-step__number">1</div>
+              <div class="ae-weitere-infos-step__content">
+                <h4 class="ae-weitere-infos-step__title">Kennzeichen & Sicherheitscodes</h4>
+                <p class="ae-weitere-infos-step__description">
+                  Eingabe von Kennzeichen und freigelegten Sicherheitscodes. 
+                  Optional können Sie Ihr Kennzeichen für die Zukunft reservieren.
+                </p>
+                <ul class="ae-weitere-infos-step__list">
+                  <li>Kennzeichen eingeben</li>
+                  <li>Sicherheitscodes freilegen und eingeben</li>
+                  <li>Optional: Kennzeichenreservierung</li>
+                  <li>Automatische Plausibilitätsprüfung</li>
+                </ul>
               </div>
             </div>
             
-            <div class="ae-weitere-infos-feature">
-              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--abmeldung">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+            <div class="ae-weitere-infos-step">
+              <div class="ae-weitere-infos-step__number">2</div>
+              <div class="ae-weitere-infos-step__content">
+                <h4 class="ae-weitere-infos-step__title">Gebühr bezahlen</h4>
+                <p class="ae-weitere-infos-step__description">
+                  Online-Zahlung per ePayment. Sichere und schnelle Abwicklung 
+                  mit verschiedenen Zahlungsmethoden.
+                </p>
+                <ul class="ae-weitere-infos-step__list">
+                  <li>Sichere Online-Zahlung</li>
+                  <li>Verschiedene Zahlungsmethoden</li>
+                  <li>Sofortige Zahlungsbestätigung</li>
+                  <li>Automatische Rechnungsstellung</li>
+                </ul>
               </div>
-              <div class="ae-weitere-infos-feature__content">
-                <h4>Benötigte Dokumente</h4>
-                <p>Zulassungsbescheinigung und Kennzeichen-Fotos. Alle Dokumente müssen vollständig und lesbar sein.</p>
+            </div>
+            
+            <div class="ae-weitere-infos-step">
+              <div class="ae-weitere-infos-step__number">3</div>
+              <div class="ae-weitere-infos-step__content">
+                <h4 class="ae-weitere-infos-step__title">Bestätigung abrufen</h4>
+                <p class="ae-weitere-infos-step__description">
+                  Sofortiger Download der Abmeldebestätigung nach erfolgreicher 
+                  Bearbeitung. Alle Dokumente digital verfügbar.
+                </p>
+                <ul class="ae-weitere-infos-step__list">
+                  <li>Sofortiger Download verfügbar</li>
+                  <li>Digitale Abmeldebestätigung</li>
+                  <li>E-Mail-Benachrichtigung</li>
+                  <li>Langzeitarchivierung in Ihrem Konto</li>
+                </ul>
               </div>
             </div>
           </div>
           
           <div class="ae-weitere-infos-cta">
             <a href="#" class="ae-btn ae-btn--primary ae-btn--large">
-              Standard Abmeldung starten
+              Fahrzeug abmelden
               <svg class="ae-btn__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path d="M4 10h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
               </svg>
@@ -551,7 +601,8 @@
           <div class="ae-weitere-infos-section__header">
             <h2 class="ae-weitere-infos-section__title">Adress-/Namensänderung</h2>
             <p class="ae-weitere-infos-section__description">
-              Adress- oder Namensänderung bei Fahrzeug. Digital und ohne Wartezeiten für alle Änderungen.
+              Eine Adressänderung ist online möglich (innerhalb desselben Zulassungsbezirks), 
+              jedoch müssen Namensänderungen offline durchgeführt werden.
             </p>
           </div>
         </section>
@@ -565,49 +616,82 @@
             </p>
           </div>
           
-          <div class="ae-weitere-infos-features">
-            <div class="ae-weitere-infos-feature">
-              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--adress-aenderung">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <div class="ae-weitere-infos-feature__content">
-                <h4>Voraussetzungen</h4>
-                <p>Meldebescheinigung und Fahrzeugpapiere müssen vorliegen. Änderung muss amtlich bestätigt sein.</p>
+          <div class="ae-weitere-infos-requirements">
+            <h4 class="ae-weitere-infos-requirements__title">Voraussetzungen</h4>
+            <ul class="ae-weitere-infos-requirements__list">
+              <li>Zulassungsbescheinigung Teil I mit Sicherheitscode (ab 01.01.2015)</li>
+              <li>Neue Adresse muss bereits beim Bürgeramt registriert sein</li>
+              <li>Antragsteller ist der aktuelle Halter</li>
+              <li>Gültige Hauptuntersuchung (HU)</li>
+              <li>Authentifizierung via BundID und AusweisApp2 (eID)</li>
+              <li>Zahlung mit Kreditkarte oder PayPal</li>
+            </ul>
+          </div>
+          
+          <div class="ae-weitere-infos-steps">
+            <div class="ae-weitere-infos-step">
+              <div class="ae-weitere-infos-step__number">1</div>
+              <div class="ae-weitere-infos-step__content">
+                <h4 class="ae-weitere-infos-step__title">Authentifizieren & Antrag starten</h4>
+                <p class="ae-weitere-infos-step__description">
+                  Login via BundID/AusweisApp2, Auswahl "Adressänderung" 
+                  und Eingabe des Sicherheitscodes.
+                </p>
+                <ul class="ae-weitere-infos-step__list">
+                  <li>Login mit BundID oder AusweisApp2</li>
+                  <li>Auswahl "Adressänderung" im Menü</li>
+                  <li>Sicherheitscode aus Zulassungsbescheinigung eingeben</li>
+                  <li>Identitätsprüfung durchführen</li>
+                </ul>
               </div>
             </div>
             
-            <div class="ae-weitere-infos-feature">
-              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--adress-aenderung">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <div class="ae-weitere-infos-feature__content">
-                <h4>Ablauf</h4>
-                <p>Änderung online melden, Dokumente hochladen und digitale Bearbeitung. Automatische Aktualisierung aller Daten.</p>
+            <div class="ae-weitere-infos-step">
+              <div class="ae-weitere-infos-step__number">2</div>
+              <div class="ae-weitere-infos-step__content">
+                <h4 class="ae-weitere-infos-step__title">Angaben prüfen</h4>
+                <p class="ae-weitere-infos-step__description">
+                  Bestätigung der neuen Adresse und Überprüfung aller 
+                  eingegebenen Daten auf Vollständigkeit.
+                </p>
+                <ul class="ae-weitere-infos-step__list">
+                  <li>Neue Adresse bestätigen</li>
+                  <li>Alle Angaben auf Vollständigkeit prüfen</li>
+                  <li>Automatische Plausibilitätsprüfung</li>
+                  <li>Korrekturmöglichkeiten bei Fehlern</li>
+                </ul>
               </div>
             </div>
             
-            <div class="ae-weitere-infos-feature">
-              <div class="ae-weitere-infos-feature__icon ae-weitere-infos-feature__icon--adress-aenderung">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <div class="ae-weitere-infos-feature__content">
-                <h4>Benötigte Dokumente</h4>
-                <p>Meldebescheinigung, Personalausweis und Zulassungsbescheinigung. Alle Dokumente müssen aktuell und vollständig sein.</p>
+            <div class="ae-weitere-infos-step">
+              <div class="ae-weitere-infos-step__number">3</div>
+              <div class="ae-weitere-infos-step__content">
+                <h4 class="ae-weitere-infos-step__title">Gebühr bezahlen & Bestätigung erhalten</h4>
+                <p class="ae-weitere-infos-step__description">
+                  Zahlung online durchführen und anschließend Download 
+                  der aktualisierten Dokumente.
+                </p>
+                <ul class="ae-weitere-infos-step__list">
+                  <li>Online-Zahlung mit Kreditkarte oder PayPal</li>
+                  <li>Sofortige Zahlungsbestätigung</li>
+                  <li>Download der aktualisierten Zulassungsbescheinigung</li>
+                  <li>E-Mail-Benachrichtigung mit allen Dokumenten</li>
+                </ul>
               </div>
             </div>
           </div>
           
+          <div class="ae-weitere-infos-note">
+            <h4 class="ae-weitere-infos-note__title">Hinweis zur Namensänderung</h4>
+            <p class="ae-weitere-infos-note__text">
+              Namensänderungen sind nicht online möglich und müssen bei der 
+              zuständigen Behörde vor Ort durchgeführt werden.
+            </p>
+          </div>
+          
           <div class="ae-weitere-infos-cta">
             <a href="#" class="ae-btn ae-btn--primary ae-btn--large">
-              Adressänderung starten
+              Adresse ändern
               <svg class="ae-btn__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path d="M4 10h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
               </svg>
@@ -752,7 +836,7 @@
             <span>Bundesweit digital</span>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   </div>
 </div>
@@ -767,6 +851,10 @@
 {
   "name": "AE Weitere Infos Page",
   "settings": [
+    {
+      "type": "header",
+      "content": "Seiten-Einstellungen"
+    },
     {
       "type": "text",
       "id": "page_title",
@@ -786,18 +874,307 @@
       "default": true
     },
     {
+      "type": "header",
+      "content": "Farben"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Hintergrundfarbe",
+      "default": "#0a0a0a"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Textfarbe",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_color_zulassung",
+      "label": "Akzentfarbe Zulassung",
+      "default": "#ff6b35"
+    },
+    {
+      "type": "color",
+      "id": "accent_color_abmeldung",
+      "label": "Akzentfarbe Abmeldung",
+      "default": "#3b82f6"
+    },
+    {
+      "type": "color",
+      "id": "accent_color_adress",
+      "label": "Akzentfarbe Adress-/Namensänderung",
+      "default": "#8b5cf6"
+    },
+    {
+      "type": "header",
+      "content": "Typografie - Desktop"
+    },
+    {
       "type": "select",
-      "id": "animation",
-      "label": "Animation",
+      "id": "font_family",
+      "label": "Schriftart",
+      "options": [
+        { "value": "system", "label": "System Font" },
+        { "value": "helvetica", "label": "Helvetica" },
+        { "value": "arial", "label": "Arial" },
+        { "value": "georgia", "label": "Georgia" }
+      ],
+      "default": "system"
+    },
+    {
+      "type": "range",
+      "id": "font_size_title_desktop",
+      "label": "Titel Schriftgröße (Desktop)",
+      "min": 24,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "font_size_subtitle_desktop",
+      "label": "Untertitel Schriftgröße (Desktop)",
+      "min": 16,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "font_size_body_desktop",
+      "label": "Text Schriftgröße (Desktop)",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Typografie - Mobile"
+    },
+    {
+      "type": "range",
+      "id": "font_size_title_mobile",
+      "label": "Titel Schriftgröße (Mobile)",
+      "min": 20,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "font_size_subtitle_mobile",
+      "label": "Untertitel Schriftgröße (Mobile)",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "font_size_body_mobile",
+      "label": "Text Schriftgröße (Mobile)",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Abstände - Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_desktop",
+      "label": "Padding (Desktop)",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "margin_sections_desktop",
+      "label": "Abstand zwischen Sektionen (Desktop)",
+      "min": 40,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Abstände - Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_mobile",
+      "label": "Padding (Mobile)",
+      "min": 16,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "margin_sections_mobile",
+      "label": "Abstand zwischen Sektionen (Mobile)",
+      "min": 24,
+      "max": 60,
+      "step": 6,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Layout-Optionen"
+    },
+    {
+      "type": "select",
+      "id": "layout_style",
+      "label": "Layout-Stil",
+      "options": [
+        { "value": "depict", "label": "Depict.ai Stil" },
+        { "value": "minimal", "label": "Minimal" },
+        { "value": "card", "label": "Card-basiert" }
+      ],
+      "default": "depict"
+    },
+    {
+      "type": "select",
+      "id": "sidebar_position",
+      "label": "Sidebar Position",
+      "options": [
+        { "value": "left", "label": "Links" },
+        { "value": "right", "label": "Rechts" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "sidebar_width",
+      "label": "Sidebar Breite",
+      "min": 250,
+      "max": 400,
+      "step": 25,
+      "unit": "px",
+      "default": 300
+    },
+    {
+      "type": "header",
+      "content": "Motion-Effekte"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_animations",
+      "label": "Animationen aktivieren",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "animation_type",
+      "label": "Animationstyp",
       "options": [
         { "value": "fade-up", "label": "Fade Up" },
         { "value": "fade-down", "label": "Fade Down" },
         { "value": "fade-left", "label": "Fade Left" },
         { "value": "fade-right", "label": "Fade Right" },
+        { "value": "slide-up", "label": "Slide Up" },
         { "value": "zoom-in", "label": "Zoom In" },
         { "value": "none", "label": "Keine Animation" }
       ],
       "default": "fade-up"
+    },
+    {
+      "type": "range",
+      "id": "animation_duration",
+      "label": "Animationsdauer",
+      "min": 0.3,
+      "max": 2.0,
+      "step": 0.1,
+      "unit": "s",
+      "default": 0.6
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_parallax",
+      "label": "Parallax-Effekt aktivieren",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "respect_reduced_motion",
+      "label": "prefers-reduced-motion respektieren",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "CTA-Einstellungen"
+    },
+    {
+      "type": "text",
+      "id": "cta_text_zulassung",
+      "label": "CTA Text Zulassung",
+      "default": "Jetzt Fahrzeug anmelden"
+    },
+    {
+      "type": "url",
+      "id": "cta_link_zulassung",
+      "label": "CTA Link Zulassung"
+    },
+    {
+      "type": "text",
+      "id": "cta_text_abmeldung",
+      "label": "CTA Text Abmeldung",
+      "default": "Fahrzeug abmelden"
+    },
+    {
+      "type": "url",
+      "id": "cta_link_abmeldung",
+      "label": "CTA Link Abmeldung"
+    },
+    {
+      "type": "text",
+      "id": "cta_text_adress",
+      "label": "CTA Text Adress-/Namensänderung",
+      "default": "Adresse ändern"
+    },
+    {
+      "type": "url",
+      "id": "cta_link_adress",
+      "label": "CTA Link Adress-/Namensänderung"
+    },
+    {
+      "type": "select",
+      "id": "cta_style",
+      "label": "CTA Stil",
+      "options": [
+        { "value": "primary", "label": "Primary Button" },
+        { "value": "secondary", "label": "Secondary Button" },
+        { "value": "outline", "label": "Outline Button" }
+      ],
+      "default": "primary"
+    },
+    {
+      "type": "select",
+      "id": "cta_size",
+      "label": "CTA Größe",
+      "options": [
+        { "value": "small", "label": "Klein" },
+        { "value": "medium", "label": "Mittel" },
+        { "value": "large", "label": "Groß" }
+      ],
+      "default": "large"
     }
   ],
   "presets": [

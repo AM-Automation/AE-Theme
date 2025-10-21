@@ -77,3 +77,4 @@ Der Banner verlinkt automatisch auf `pages.privacy-policy.url`. Stelle sicher, d
 - ✅ Focus Management
 - ✅ High Contrast Support
 - ✅ Reduced Motion Support
+
