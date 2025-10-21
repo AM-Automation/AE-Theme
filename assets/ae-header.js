@@ -73,23 +73,57 @@
     }
   });
 
-  // Make header stay at 20px once banner is off-screen
+  // Make header sticky with smooth transitions - SIMPLIFIED VERSION
   document.addEventListener('DOMContentLoaded', () => {
-    const header = document.querySelector('[data-ae-header]') || document.querySelector('.ae-header');
-    if (!header) return;
-    const COLLAPSE_Y = 80; // sync with banner logic
+    // Try multiple selectors to find the header
+    const header = document.querySelector('[data-ae-header]') || 
+                   document.querySelector('.ae-header') ||
+                   document.querySelector('[id*="shopify-section"][id*="header"]') ||
+                   document.querySelector('#shopify-section-sections--19397825560915__header');
+    
+    if (!header) {
+      console.log('Header element not found');
+      console.log('Available elements:', document.querySelectorAll('[id*="header"]'));
+      return;
+    }
+    
+    // Use only the header element, not the header-group
+    const targetElement = header;
+    
+    if (!targetElement) {
+      console.log('No target element found');
+      return;
+    }
+    
+    console.log('Header found:', header);
+    console.log('Target element:', targetElement);
+    console.log('Target element ID:', targetElement.id);
+    
+    const COLLAPSE_Y = 0; // Header becomes sticky immediately when banner edge appears
+    const HYSTERESIS = 5; // Add 5px hysteresis to prevent flickering
     let ticking = false;
-    let isFixed = false;
+    let isSticky = false;
 
     const onScroll = () => {
       const y = window.scrollY || window.pageYOffset;
-      if (!isFixed && y > COLLAPSE_Y) {
-        header.classList.add('is-fixed');
-        isFixed = true;
-      } else if (isFixed && y <= COLLAPSE_Y) {
-        header.classList.remove('is-fixed');
-        isFixed = false;
+      
+      // Add hysteresis to prevent flickering at the threshold
+      const stickyThreshold = isSticky ? COLLAPSE_Y - HYSTERESIS : COLLAPSE_Y + HYSTERESIS;
+      
+      // Simple logic with hysteresis: sticky when banner edge appears
+      if (!isSticky && y > stickyThreshold) {
+        targetElement.classList.add('is-sticky');
+        isSticky = true;
+        console.log('✅ Header is now sticky (banner edge visible) at scroll position:', y);
+        
+        // Force a reflow to ensure styles are applied
+        targetElement.getBoundingClientRect();
+      } else if (isSticky && y <= stickyThreshold) {
+        targetElement.classList.remove('is-sticky');
+        isSticky = false;
+        console.log('❌ Header is no longer sticky (at top) at scroll position:', y);
       }
+      
       ticking = false;
     };
 

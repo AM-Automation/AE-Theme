@@ -2061,16 +2061,68 @@ html body .ae-header {
   backdrop-filter: none !important;
   padding: 0 24px !important;
   margin-bottom: 0 !important; /* gap is controlled by --header-landing-gap on first section */
+  transition: all 0.3s ease !important;
 }
 
-/* Hard lock class to keep header at 20px without layout shift when banner is gone */
-html body .ae-header.is-fixed {
+/* Sticky state with smooth transitions when scrolled */
+html body .ae-header.is-sticky {
+  background: rgba(26, 26, 26, 0.95) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Force sticky behavior - only for the header element itself */
+html body .ae-header.is-sticky,
+html body #shopify-section-sections--19397825560915__header.ae-header.is-sticky,
+html body [id*="shopify-section"][id*="header"].ae-header.is-sticky,
+html body [id*="shopify-section"][id*="header"].is-sticky {
   position: sticky !important;
-  top: var(--ae-header-sticky-offset) !important;
+  top: 20px !important;
+  z-index: 1000 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: none !important;
+}
+
+html body .ae-header.is-sticky .ae-header__container,
+html body #shopify-section-sections--19397825560915__header.ae-header.is-sticky .ae-header__container,
+html body [id*="shopify-section"][id*="header"].ae-header.is-sticky .ae-header__container,
+html body [id*="shopify-section"][id*="header"].is-sticky .ae-header__container {
+  min-height: 60px !important;
+  height: 60px !important;
+  padding: 12px var(--container-padding) !important;
+  background: #252525 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Conditional styling based on theme settings */
+html body .ae-header.reduce-height.is-sticky .ae-header__container {
+  min-height: 50px !important;
+  height: 50px !important;
+  padding: 8px var(--container-padding) !important;
+}
+
+html body .ae-header.background-blur.is-sticky {
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+html body .ae-header.background-blur.is-sticky .ae-header__container {
+  background: rgba(26, 26, 26, 0.6) !important;
 }
 
 html body .ae-header * {
   box-sizing: border-box !important;
+}
+
+/* Ensure header-group stays normal (not sticky) */
+html body #header-group {
+  position: relative !important;
 }
 
 html body .ae-header .ae-header__container {
@@ -2089,6 +2141,7 @@ html body .ae-header .ae-header__container {
   border-radius: 16px !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  transition: all 0.3s ease !important;
 }
 
 /* Logo - Zentriert */

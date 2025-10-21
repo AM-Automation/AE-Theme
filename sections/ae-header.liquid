@@ -7,7 +7,10 @@
 {{ 'ae-header.js' | asset_url | script_tag }}
 {{ 'ae-mega-menu.js' | asset_url | script_tag }}
 
-<header class="ae-header" role="banner" data-ae-header>
+<header class="ae-header" role="banner" data-ae-header 
+        data-sticky-mode="{{ section.settings.sticky_header | default: 'always' }}"
+        data-reduce-height="{{ section.settings.sticky_reduce_height | default: true }}"
+        data-background-blur="{{ section.settings.sticky_background_blur | default: true }}">
   <div class="ae-header__container">
     
     {%- comment -%} Logo - Links (Depict.ai Style) {%- endcomment -%}
@@ -306,6 +309,49 @@
       "type": "url",
       "id": "cta_link",
       "label": "CTA Link"
+    },
+    {
+      "type": "header",
+      "content": "Sticky Header"
+    },
+    {
+      "type": "select",
+      "id": "sticky_header",
+      "label": "Sticky Header Verhalten",
+      "options": [
+        {
+          "value": "none",
+          "label": "Kein Sticky Header"
+        },
+        {
+          "value": "scroll_up",
+          "label": "Beim Scrollen nach oben"
+        },
+        {
+          "value": "always",
+          "label": "Immer sichtbar"
+        },
+        {
+          "value": "always_reduce",
+          "label": "Immer sichtbar, Logo verkleinern"
+        }
+      ],
+      "default": "always",
+      "info": "Bestimmt, wann der Header beim Scrollen sichtbar bleibt"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_reduce_height",
+      "label": "Höhe beim Scrollen reduzieren",
+      "default": true,
+      "info": "Header wird kompakter wenn er sticky ist"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_background_blur",
+      "label": "Hintergrund-Blur-Effekt",
+      "default": true,
+      "info": "Fügt einen Blur-Effekt zum Hintergrund hinzu"
     }
   ]
 }
